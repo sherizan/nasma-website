@@ -1,0 +1,57 @@
+Privacy Policy for Nasma (nasma.ai)
+
+Effective Date: 14 January 2025
+
+At Nasma, your privacy is our highest priority. This Privacy Policy explains how we collect, use, and protect your personal information when you use our application and services.
+By using Nasma, you agree to the terms outlined in this Privacy Policy.
+
+1. Information We Collect
+We collect information to improve our services and enhance your experience. Here’s what we collect:
+1.1 Information You Provide:
+	•	Account Details: Name, email address, phone number, and profile photo when you sign up.
+	•	Messages & Calls: Content and metadata from your chats are stored temporarily for delivery purposes.
+1.2 Automatically Collected Information:
+	•	Device Information: Device type, operating system, app version, and unique device identifiers.
+	•	Usage Data: How you interact with the app, including features used and session duration.
+	•	Location Data: Approximate location to personalize content or services (optional, with your permission).
+
+2. How We Use Your Information
+We use the collected information to:
+	•	Provide and improve our services.
+	•	Personalize user experiences (e.g., responsive ambient UI).
+	•	Conduct analytics to understand user behavior and enhance app performance.
+	•	Comply with legal obligations and prevent fraud.
+
+3. How We Share Your Information
+We do not sell your personal data. However, we may share your information in the following scenarios:
+	•	Service Providers: Trusted partners who help us with app operations (e.g., hosting, analytics).
+	•	Legal Requirements: When required by law or to protect Nasma’s rights and users.
+
+4. Data Storage and Security
+	•	Your data is stored securely on encrypted servers.
+	•	Access to your data is restricted to authorized personnel only.
+
+5. Your Privacy Choices
+You have control over your information:
+	•	Access and Update: Edit your profile or account details at any time.
+	•	Delete Account: You can request to delete your account and associated data.
+	•	Opt-Out: Manage permissions for location, notifications, and other data collection via your device settings.
+
+6. Data Retention
+We retain your data only as long as necessary to provide our services or comply with legal obligations. For example:
+	•	Messages are stored temporarily for delivery and then deleted.
+	•	Account data is retained until you delete your account.
+
+7. Third-Party Services
+Nasma may integrate third-party services (e.g., payment processors, analytics tools). These services follow their own privacy policies. We encourage you to review them.
+
+8. Children's Privacy
+Nasma is not intended for users under 4 years old. We do not knowingly collect data from children.
+
+9. Updates to This Privacy Policy
+We may update this Privacy Policy from time to time. Changes will be posted on this section with the updated date.
+
+10. Contact Us
+If you have any questions about this Privacy Policy or your data, please contact us:
+	•	Email: hi@nasma.ai
+	•	Website: https://nasma.ai
