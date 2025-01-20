@@ -1,7 +1,15 @@
-Welcome to Nasma.ai—your personal companion for spiritual growth, built with simplicity, modernity, and mindfulness at its core. Inspired by the gentle “nasma” (breeze) that refreshes the soul, our app is designed to seamlessly integrate faith into your daily life.
+Welcome to Nasma.ai — your personal companion for spiritual growth, built with simplicity, modernity, and mindfulness at its core. Inspired by the gentle “nasma” (breeze) that refreshes the soul, our app is designed to seamlessly integrate faith into your daily life.
 
 Nasma.ai provides a beautifully crafted, minimalistic interface that delivers accurate prayer times, Qibla direction, and thoughtful reminders, all powered by the latest in AI technology. Whether you're starting your spiritual journey or looking to enhance your daily practices, Nasma.ai ensures your connection to faith is always within reach.
 
 Our vision is to create a space where technology and spirituality meet, offering personalized guidance and an experience that feels like a gentle breeze of serenity in your busy day. With features like dynamic themes, intelligent notifications, and a design inspired by modern aesthetics, Nasma.ai makes practicing your faith not only fulfilling but also delightful.
 
 Let Nasma.ai guide you, refresh your spirit, and keep you aligned with your daily prayers—one breeze at a time.
+
+—
+
+Nasma.ai is a project by Sherizan Sheikh, made for his supportive wife, Sophia.
+
+Prayer times data is provided by Al Adhan Service.
+
+AI conversations are powered by OpenAI ChatGPT.
