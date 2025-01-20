@@ -74,8 +74,11 @@
             </svg>
         </a>
     </header>
-    <footer class="bg-gray-800 text-white text-center py-4 fixed bottom-0 w-full">
-        <p>&copy; 2025 nasma.ai. All rights reserved.</p>
+    <footer class="bg-gray-100 text-gray-500 text-center py-4 fixed bottom-0 w-full">
+        <p>&copy; <span id="year"></span> nasma.ai. ❤️ abu dhabi. bismillah.</p>
     </footer>
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
 </body>
 </html> 
