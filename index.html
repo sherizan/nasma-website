@@ -3,82 +3,828 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nasma.ai</title>
+    <title>Nasma.ai - Your Personal Islamic Prayer & Spirituality Companion App</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Nasma.ai is your personal Islamic companion app for spiritual growth, offering accurate prayer times, Qibla direction, and mindful reminders. Experience faith with modern simplicity.">
+    <meta name="keywords" content="Islamic app, prayer times, Qibla direction, Muslim app, spiritual growth, Islamic reminders, prayer companion, Muslim prayer times, Islamic spiritual app, dhikr counter">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Nasma.ai - Islamic Prayer & Spirituality Companion">
+    <meta property="og:description" content="Your personal companion for spiritual growth, offering accurate prayer times, Qibla direction, and mindful reminders.">
+    <meta property="og:image" content="images/nasma_social_share.jpg">
+    <meta property="og:url" content="https://nasma.ai">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Nasma.ai - Islamic Prayer & Spirituality Companion">
+    <meta name="twitter:description" content="Your personal companion for spiritual growth, offering accurate prayer times, Qibla direction, and mindful reminders.">
+    <meta name="twitter:image" content="images/nasma_social_share.jpg">
+    
     <!-- Import Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <!-- Import Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
         /* Apply Space Grotesk font to h1 */
         h1 {
             font-family: 'Space Grotesk', sans-serif;
         }
+
+        /* Apply Space Grotesk font to all headings and body text */
+        body, h1, h2, h3, h4, h5, h6, p, a, span, div {
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        .mesh-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(45deg, 
+                rgba(255, 241, 235, 0.7) 0%,
+                rgba(198, 255, 239, 0.7) 33%,
+                rgba(255, 241, 235, 0.7) 66%,
+                rgba(255, 243, 202, 0.7) 100%
+            );
+            filter: blur(100px);
+            animation: meshMove 15s ease infinite;
+        }
+
+        .mesh-gradient::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(
+                circle at 50% 50%,
+                rgba(255, 255, 255, 0.8) 0%,
+                rgba(255, 255, 255, 0.3) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+        }
+
+        @keyframes meshMove {
+            0% {
+                background-position: 0% 0%;
+            }
+            50% {
+                background-position: 100% 100%;
+            }
+            100% {
+                background-position: 0% 0%;
+            }
+        }
+
+        /* Adjust background colors for content sections */
+        .bg-white {
+            background-color: rgba(255, 255, 255, 0.8) !important;
+            backdrop-filter: blur(10px);
+        }
+
+        .bg-gray-100 {
+            background-color: rgba(255, 255, 255, 0.9) !important;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Add glass morphism effect to cards */
+        .feature-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .iphone-mockup {
+            position: relative;
+            width: 100%;
+            max-width: 380px; /* Adjusted for portrait */
+            margin: 0 auto;
+        }
+        
+        .iphone-frame {
+            position: relative;
+            width: 100%;
+            padding: 11px;
+            background: #1f1f1f;
+            border-radius: 44px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .iphone-screen {
+            position: relative;
+            background: #000;
+            border-radius: 35px;
+            overflow: hidden;
+            aspect-ratio: 9/19.5; /* iPhone aspect ratio in portrait */
+        }
+
+        /* .iphone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 24px;
+            background: #1f1f1f;
+            border-radius: 0 0 24px 24px;
+            z-index: 2;
+        } */
+
+        .iphone-button {
+            position: absolute;
+            right: -3px;
+            top: 120px;
+            width: 3px;
+            height: 60px;
+            background: #2a2a2a;
+            border-radius: 0 3px 3px 0;
+        }
+
+        .iphone-button.volume-up {
+            top: 120px;
+        }
+
+        .iphone-button.volume-down {
+            top: 190px;
+        }
+
+        .iphone-button.power {
+            left: -3px;
+            top: 120px;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Carousel Controls */
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #CBD5E0;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .carousel-dot.active {
+            background-color: #4A5568;
+        }
+
+        /* Hide all videos except active one */
+        .carousel-video {
+            display: none;
+        }
+
+        .carousel-video.active {
+            display: block;
+        }
+
+        /* Mobile feature text */
+        .mobile-feature-text {
+            display: none;
+        }
+
+        /* Mobile optimization */
+        @media (max-width: 768px) {
+            #features {
+                display: none; /* Hide the original features section */
+            }
+
+            .desktop-features {
+                display: none;
+            }
+
+            .mobile-carousel {
+                display: block !important; /* Force display of mobile carousel */
+                padding: 2rem 1rem;
+            }
+
+            .mobile-feature-text {
+                display: block;
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+
+            .iphone-mockup {
+                max-width: 280px; /* Slightly smaller iPhone on mobile */
+                margin: 0 auto;
+            }
+        }
+
+        /* Hide mobile carousel by default on desktop */
+        .mobile-carousel {
+            display: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Add padding-top to sections to account for fixed header */
+        #ai-companion, #prayer-times, #qibla, #quran, #dhikr {
+            scroll-margin-top: 80px; /* Adjust this value based on your header height */
+        }
+
+        /* Custom scrollbar for modal content */
+        #modalContent::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #modalContent::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        #modalContent::-webkit-scrollbar-thumb {
+            background: #cbd5e0;
+            border-radius: 4px;
+        }
+
+        #modalContent::-webkit-scrollbar-thumb:hover {
+            background: #a0aec0;
+        }
+
+        /* Modal Content Height */
+        #modalContent {
+            max-height: calc(100vh - 200px); /* Adjust based on header height */
+            min-height: 200px;
+        }
+
+        /* Custom scrollbar */
+        #modalContent::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #modalContent::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+
+        #modalContent::-webkit-scrollbar-thumb {
+            background: #cbd5e0;
+            border-radius: 3px;
+        }
+
+        #modalContent::-webkit-scrollbar-thumb:hover {
+            background: #a0aec0;
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 640px) {
+            #modalContent {
+                max-height: calc(100vh - 160px);
+            }
+
+            #modalContent::-webkit-scrollbar {
+                width: 4px;
+            }
+        }
+
+        /* Prevent body scroll when modal is open */
+        body.modal-open {
+            overflow: hidden;
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800">
-    <header class="bg-white text-center py-5 pt-10">
-        <img src="images/nasma_logo.svg" width="300" height="300" alt="Nasma Logo" class="mx-auto mb-4 pt-16">
-        <h1 class="text-4xl font-bold mb-1">nasma.ai</h1>
-        <p class="text-lg leading-relaxed">prayer. purpose. peace</p>
-        <a href="https://apps.apple.com/app/id6740181795" class="inline-block transition duration-300 py-5 px-5" target="_blank">
-            <svg id="livetype" xmlns="http://www.w3.org/2000/svg" width="156.10054" height="40" viewBox="0 0 156.10054 40">
-            <title>Download_on_the_Mac_App_Store_Badge_US-UK_RGB_blk_092917</title>
-            <g>
-                <g>
-                <g>
-                    <path d="M146.57123,0H9.53468c-.3667,0-.729,0-1.09473.002-.30615.002-.60986.00781-.91895.0127A13.21476,13.21476,0,0,0,5.5171.19141a6.66509,6.66509,0,0,0-1.90088.627A6.4378,6.4378,0,0,0,1.99757,1.99707,6.25844,6.25844,0,0,0,.81935,3.61816a6.60119,6.60119,0,0,0-.625,1.90332,12.993,12.993,0,0,0-.1792,2.002C.00587,7.83008.00489,8.1377,0,8.44434V31.5586c.00489.3105.00587.6113.01514.9219a12.99232,12.99232,0,0,0,.1792,2.0019,6.58756,6.58756,0,0,0,.625,1.9043A6.20778,6.20778,0,0,0,1.99757,38.001a6.27446,6.27446,0,0,0,1.61865,1.1787,6.70082,6.70082,0,0,0,1.90088.6308,13.45514,13.45514,0,0,0,2.0039.1768c.30909.0068.6128.0107.91895.0107C8.80567,40,9.168,40,9.53468,40H146.57123c.3594,0,.7246,0,1.084-.002.3047,0,.6172-.0039.9219-.0107a13.279,13.279,0,0,0,2-.1768,6.80432,6.80432,0,0,0,1.9082-.6308,6.27742,6.27742,0,0,0,1.6172-1.1787,6.39482,6.39482,0,0,0,1.1816-1.6143,6.60413,6.60413,0,0,0,.6191-1.9043,13.50643,13.50643,0,0,0,.1856-2.0019c.0039-.3106.0039-.6114.0039-.9219.0078-.3633.0078-.7246.0078-1.0938V9.53613c0-.36621,0-.72949-.0078-1.09179,0-.30664,0-.61426-.0039-.9209a13.5071,13.5071,0,0,0-.1856-2.002,6.6177,6.6177,0,0,0-.6191-1.90332,6.46619,6.46619,0,0,0-2.7988-2.7998,6.76754,6.76754,0,0,0-1.9082-.627,13.04394,13.04394,0,0,0-2-.17676c-.3047-.00488-.6172-.01074-.9219-.01269-.3594-.002-.7246-.002-1.084-.002Z" style="fill: #a6a6a6"/>
-                    <path d="M8.44483,39.125c-.30468,0-.60205-.0039-.90429-.0107a12.68714,12.68714,0,0,1-1.86914-.1631,5.88381,5.88381,0,0,1-1.65674-.5479,5.40573,5.40573,0,0,1-1.397-1.0166,5.32082,5.32082,0,0,1-1.02051-1.3965,5.72184,5.72184,0,0,1-.543-1.6572,12.41339,12.41339,0,0,1-.1665-1.875c-.00634-.2109-.01464-.9131-.01464-.9131V8.44434S.88185,7.75293.8877,7.5498a12.37032,12.37032,0,0,1,.16553-1.87207,5.75552,5.75552,0,0,1,.54346-1.6621A5.3735,5.3735,0,0,1,2.61183,2.61768,5.56543,5.56543,0,0,1,4.01417,1.59521a5.82309,5.82309,0,0,1,1.65332-.54394A12.58589,12.58589,0,0,1,7.543.88721L8.44532.875h139.205l.9131.0127a12.38493,12.38493,0,0,1,1.8584.16259,5.93833,5.93833,0,0,1,1.6709.54785,5.59374,5.59374,0,0,1,2.415,2.41993,5.76267,5.76267,0,0,1,.5352,1.64892,12.995,12.995,0,0,1,.1738,1.88721c.0029.2832.0029.5874.0029.89014.0079.375.0079.73193.0079,1.09179V30.4648c0,.3633,0,.7178-.0079,1.0752,0,.3252,0,.6231-.0039.9297a12.73127,12.73127,0,0,1-.1709,1.8535,5.739,5.739,0,0,1-.54,1.67,5.48029,5.48029,0,0,1-1.0156,1.3857,5.4129,5.4129,0,0,1-1.3994,1.0225,5.86168,5.86168,0,0,1-1.668.5498,12.54218,12.54218,0,0,1-1.8692.1631c-.2929.0068-.5996.0107-.8974.0107l-1.084.002Z"/>
-                </g>
-                <g id="_Group_" data-name="&lt;Group&gt;">
-                    <g id="_Group_2" data-name="&lt;Group&gt;">
-                    <g id="_Group_3" data-name="&lt;Group&gt;">
-                        <g id="_Group_4" data-name="&lt;Group&gt;">
-                        <path id="_Path_" data-name="&lt;Path&gt;" d="M24.76888,20.30068a4.94881,4.94881,0,0,1,2.35656-4.15206,5.06566,5.06566,0,0,0-3.99116-2.15768c-1.67924-.17626-3.30719,1.00483-4.1629,1.00483-.87227,0-2.18977-.98733-3.6085-.95814a5.31529,5.31529,0,0,0-4.47292,2.72787c-1.934,3.34842-.49141,8.26947,1.3612,10.97608.9269,1.32535,2.01018,2.8058,3.42763,2.7533,1.38706-.05753,1.9051-.88448,3.5794-.88448,1.65876,0,2.14479.88448,3.591.8511,1.48838-.02416,2.42613-1.33124,3.32051-2.66914a10.962,10.962,0,0,0,1.51842-3.09251A4.78205,4.78205,0,0,1,24.76888,20.30068Z" style="fill: #fff"/>
-                        <path id="_Path_2" data-name="&lt;Path&gt;" d="M22.03725,12.21089a4.87248,4.87248,0,0,0,1.11452-3.49062,4.95746,4.95746,0,0,0-3.20758,1.65961,4.63634,4.63634,0,0,0-1.14371,3.36139A4.09905,4.09905,0,0,0,22.03725,12.21089Z" style="fill: #fff"/>
-                        </g>
-                    </g>
-                    <g>
-                        <path d="M46.14895,30.49609V21.35645H46.0884l-3.74316,9.04492H40.91652l-3.75293-9.04492H37.104v9.13965H35.34816v-12.418h2.22949l4.01855,9.80176h.06836l4.01074-9.80176h2.2373v12.418Z" style="fill: #fff"/>
-                        <path d="M49.396,27.92285c0-1.583,1.21289-2.53906,3.36523-2.668l2.47852-.1377v-.68848c0-1.00684-.66309-1.5752-1.791-1.5752a1.73035,1.73035,0,0,0-1.90137,1.27441H49.8091c.05176-1.63574,1.5752-2.79687,3.69141-2.79687,2.16016,0,3.58887,1.17871,3.58887,2.96v6.20508H55.30813V29.00684h-.043a3.23683,3.23683,0,0,1-2.85742,1.64453A2.74447,2.74447,0,0,1,49.396,27.92285Zm5.84375-.81738V26.4082l-2.22949.1377c-1.11035.06934-1.73828.55078-1.73828,1.3252,0,.792.6543,1.30859,1.65234,1.30859A2.17046,2.17046,0,0,0,55.23977,27.10547Z" style="fill: #fff"/>
-                        <path d="M64.89309,24.55762a1.99909,1.99909,0,0,0-2.13379-1.66895c-1.42871,0-2.375,1.19629-2.375,3.08105,0,1.92773.95508,3.08887,2.3916,3.08887a1.94829,1.94829,0,0,0,2.11719-1.626h1.79A3.61835,3.61835,0,0,1,62.7593,30.6084c-2.582,0-4.26855-1.76465-4.26855-4.63867,0-2.81445,1.68652-4.63867,4.251-4.63867a3.63931,3.63931,0,0,1,3.9248,3.22656Z" style="fill: #fff"/>
-                        <path d="M78.7593,27.13965H74.0259l-1.13672,3.35645H70.8843l4.4834-12.418h2.083l4.4834,12.418H79.895Zm-4.24316-1.54883h3.752l-1.84961-5.44727h-.05176Z" style="fill: #fff"/>
-                        <path d="M91.61672,25.96973c0,2.81348-1.50586,4.62109-3.77832,4.62109a3.0693,3.0693,0,0,1-2.84863-1.584h-.043v4.48438H83.0884V21.44238h1.79883v1.50586h.03418a3.21161,3.21161,0,0,1,2.88281-1.60059C90.10207,21.34766,91.61672,23.16406,91.61672,25.96973Zm-1.91016,0c0-1.833-.94727-3.03809-2.39258-3.03809-1.41992,0-2.375,1.23047-2.375,3.03809,0,1.82422.95508,3.0459,2.375,3.0459C88.7593,29.01563,89.70656,27.81934,89.70656,25.96973Z" style="fill: #fff"/>
-                        <path d="M101.58156,25.96973c0,2.81348-1.50586,4.62109-3.77832,4.62109a3.0693,3.0693,0,0,1-2.84863-1.584h-.043v4.48438h-1.8584V21.44238h1.79883v1.50586h.03418a3.21162,3.21162,0,0,1,2.88281-1.60059C100.06691,21.34766,101.58156,23.16406,101.58156,25.96973Zm-1.91016,0c0-1.833-.94727-3.03809-2.39258-3.03809-1.41992,0-2.375,1.23047-2.375,3.03809,0,1.82422.95508,3.0459,2.375,3.0459C98.72414,29.01563,99.67141,27.81934,99.67141,25.96973Z" style="fill: #fff"/>
-                        <path d="M108.1675,27.03613c.1377,1.23145,1.334,2.04,2.96875,2.04,1.56641,0,2.69336-.80859,2.69336-1.91895,0-.96387-.67969-1.541-2.28906-1.93652l-1.60937-.3877c-2.28027-.55078-3.33887-1.61719-3.33887-3.34766,0-2.14258,1.86719-3.61426,4.51855-3.61426,2.624,0,4.42285,1.47168,4.4834,3.61426h-1.876c-.1123-1.23926-1.13672-1.9873-2.63379-1.9873s-2.52149.75684-2.52149,1.8584c0,.87793.65431,1.39453,2.25489,1.79l1.36816.33594c2.54785.60254,3.60645,1.626,3.60645,3.44238,0,2.32324-1.85059,3.77832-4.79395,3.77832-2.75391,0-4.61328-1.4209-4.7334-3.667Z" style="fill: #fff"/>
-                        <path d="M119.80324,19.2998v2.14258h1.72168v1.47168h-1.72168v4.99121c0,.77539.34473,1.13672,1.10156,1.13672a5.80752,5.80752,0,0,0,.61133-.043v1.46289a5.10351,5.10351,0,0,1-1.03223.08594c-1.833,0-2.54785-.68848-2.54785-2.44434V22.91406h-1.31641V21.44238h1.31641V19.2998Z" style="fill: #fff"/>
-                        <path d="M122.521,25.96973c0-2.84863,1.67773-4.63867,4.29395-4.63867,2.625,0,4.29492,1.79,4.29492,4.63867,0,2.85645-1.66113,4.63867-4.29492,4.63867C124.18215,30.6084,122.521,28.82617,122.521,25.96973Zm6.69531,0c0-1.9541-.89551-3.10742-2.40137-3.10742s-2.40137,1.16211-2.40137,3.10742c0,1.96191.89551,3.10645,2.40137,3.10645S129.21633,27.93164,129.21633,25.96973Z" style="fill: #fff"/>
-                        <path d="M132.64309,21.44238h1.77246v1.541h.043a2.1594,2.1594,0,0,1,2.17773-1.63574,2.86616,2.86616,0,0,1,.63672.06934v1.73828a2.598,2.598,0,0,0-.835-.1123,1.87264,1.87264,0,0,0-1.93651,2.083v5.37012h-1.8584Z" style="fill: #fff"/>
-                        <path d="M145.84035,27.83691c-.25,1.64355-1.85059,2.77148-3.89844,2.77148-2.63379,0-4.26855-1.76465-4.26855-4.5957,0-2.83984,1.64355-4.68164,4.19043-4.68164,2.50488,0,4.08008,1.7207,4.08008,4.46582v.63672h-6.39453v.1123a2.358,2.358,0,0,0,2.43555,2.56445,2.04834,2.04834,0,0,0,2.09082-1.27344Zm-6.28223-2.70215h4.52637a2.1773,2.1773,0,0,0-2.2207-2.29785A2.292,2.292,0,0,0,139.55813,25.13477Z" style="fill: #fff"/>
-                    </g>
-                    </g>
-                </g>
-                </g>
-                <g id="_Group_5" data-name="&lt;Group&gt;">
-                <g>
-                    <path d="M37.82619,8.731a2.63964,2.63964,0,0,1,2.80762,2.96484c0,1.90625-1.03027,3.002-2.80762,3.002H35.67092V8.731Zm-1.22852,5.123h1.125a1.87588,1.87588,0,0,0,1.96777-2.146,1.881,1.881,0,0,0-1.96777-2.13379h-1.125Z" style="fill: #fff"/>
-                    <path d="M41.68068,12.44434a2.13323,2.13323,0,1,1,4.24707,0,2.13358,2.13358,0,1,1-4.24707,0Zm3.333,0c0-.97607-.43848-1.54687-1.208-1.54687-.77246,0-1.207.5708-1.207,1.54688,0,.98389.43457,1.55029,1.207,1.55029C44.57521,13.99463,45.01369,13.42432,45.01369,12.44434Z" style="fill: #fff"/>
-                    <path d="M51.57326,14.69775h-.92187l-.93066-3.31641h-.07031l-.92676,3.31641h-.91309l-1.24121-4.50293h.90137l.80664,3.436h.06641l.92578-3.436h.85254l.92578,3.436h.07031l.80273-3.436h.88867Z" style="fill: #fff"/>
-                    <path d="M53.85354,10.19482H54.709v.71533h.06641a1.348,1.348,0,0,1,1.34375-.80225,1.46456,1.46456,0,0,1,1.55859,1.6748v2.915h-.88867V12.00586c0-.72363-.31445-1.0835-.97168-1.0835a1.03294,1.03294,0,0,0-1.0752,1.14111v2.63428h-.88867Z" style="fill: #fff"/>
-                    <path d="M59.09377,8.437h.88867v6.26074h-.88867Z" style="fill: #fff"/>
-                    <path d="M61.21779,12.44434a2.13323,2.13323,0,1,1,4.24707,0,2.13358,2.13358,0,1,1-4.24707,0Zm3.333,0c0-.97607-.43848-1.54687-1.208-1.54687-.77246,0-1.207.5708-1.207,1.54688,0,.98389.43457,1.55029,1.207,1.55029C64.11232,13.99463,64.5508,13.42432,64.5508,12.44434Z" style="fill: #fff"/>
-                    <path d="M66.40041,13.42432c0-.81055.60352-1.27783,1.6748-1.34424l1.21973-.07031v-.38867c0-.47559-.31445-.74414-.92187-.74414-.49609,0-.83984.18213-.93848.50049h-.86035c.09082-.77344.81836-1.26953,1.83984-1.26953,1.12891,0,1.76563.562,1.76563,1.51318v3.07666h-.85547v-.63281h-.07031a1.515,1.515,0,0,1-1.35254.707A1.36026,1.36026,0,0,1,66.40041,13.42432Zm2.89453-.38477v-.37646l-1.09961.07031c-.62012.0415-.90137.25244-.90137.64941,0,.40527.35156.64111.835.64111A1.0615,1.0615,0,0,0,69.29494,13.03955Z" style="fill: #fff"/>
-                    <path d="M71.34768,12.44434c0-1.42285.73145-2.32422,1.86914-2.32422a1.484,1.484,0,0,1,1.38086.79h.06641V8.437h.88867v6.26074h-.85156v-.71143h-.07031a1.56284,1.56284,0,0,1-1.41406.78564C72.07131,14.772,71.34768,13.87061,71.34768,12.44434Zm.918,0c0,.95508.4502,1.52979,1.20313,1.52979.749,0,1.21191-.583,1.21191-1.52588,0-.93848-.46777-1.52979-1.21191-1.52979C72.72072,10.91846,72.26564,11.49707,72.26564,12.44434Z" style="fill: #fff"/>
-                    <path d="M79.22951,12.44434a2.13346,2.13346,0,1,1,4.24756,0,2.1338,2.1338,0,1,1-4.24756,0Zm3.333,0c0-.97607-.43848-1.54687-1.208-1.54687-.77246,0-1.207.5708-1.207,1.54688,0,.98389.43457,1.55029,1.207,1.55029C82.124,13.99463,82.56252,13.42432,82.56252,12.44434Z" style="fill: #fff"/>
-                    <path d="M84.66945,10.19482h.85547v.71533h.06641a1.348,1.348,0,0,1,1.34375-.80225,1.46456,1.46456,0,0,1,1.55859,1.6748v2.915H87.605V12.00586c0-.72363-.31445-1.0835-.97168-1.0835a1.03294,1.03294,0,0,0-1.0752,1.14111v2.63428h-.88867Z" style="fill: #fff"/>
-                    <path d="M93.51516,9.07373v1.1416h.97559v.74854h-.97559V13.2793c0,.47168.19434.67822.63672.67822a2.96657,2.96657,0,0,0,.33887-.02051v.74023a2.9155,2.9155,0,0,1-.4834.04541c-.98828,0-1.38184-.34766-1.38184-1.21582v-2.543h-.71484v-.74854h.71484V9.07373Z" style="fill: #fff"/>
-                    <path d="M95.70461,8.437h.88086v2.48145h.07031a1.3856,1.3856,0,0,1,1.373-.80664,1.48339,1.48339,0,0,1,1.55078,1.67871v2.90723H98.69v-2.688c0-.71924-.335-1.0835-.96289-1.0835a1.05194,1.05194,0,0,0-1.13379,1.1416v2.62988h-.88867Z" style="fill: #fff"/>
-                    <path d="M104.76125,13.48193a1.828,1.828,0,0,1-1.95117,1.30273A2.04531,2.04531,0,0,1,100.73,12.46045a2.07685,2.07685,0,0,1,2.07617-2.35254c1.25293,0,2.00879.856,2.00879,2.27V12.688h-3.17969v.0498a1.1902,1.1902,0,0,0,1.19922,1.29,1.07934,1.07934,0,0,0,1.07129-.5459Zm-3.126-1.45117h2.27441a1.08647,1.08647,0,0,0-1.1084-1.1665A1.15162,1.15162,0,0,0,101.63527,12.03076Z" style="fill: #fff"/>
-                </g>
-                </g>
-            </g>
-            </svg>
-        </a>
-    </header>
-    <footer class="bg-gray-100 text-gray-500 text-center py-4 fixed bottom-0 w-full">
-        <p>&copy; <span id="year"></span> nasma.ai. ❤️ abu dhabi. bismillah.</p>
+    <!-- Add this banner at the top of your body, before any other content -->
+    <div id="banner" class="relative isolate flex items-center gap-x-6 overflow-hidden bg-gray-50 px-6 py-2.5 sm:px-3.5 sm:before:flex-1">
+        <!-- Decorative background elements -->
+        <div class="absolute top-1/2 left-[max(-7rem,calc(50%-52rem))] -z-10 -translate-y-1/2 transform-gpu blur-2xl" aria-hidden="true">
+            <div class="aspect-[577/310] w-[36.0625rem] bg-gradient-to-r from-[#9089fc] to-[#9089fc] opacity-30" style="clip-path: polygon(74.8% 41.9%, 97.2% 73.2%, 100% 34.9%, 92.5% 0.4%, 87.5% 0%, 75% 28.6%, 58.5% 54.6%, 50.1% 56.8%, 46.9% 44%, 48.3% 17.4%, 24.7% 53.9%, 0% 27.9%, 11.9% 74.2%, 24.9% 54.1%, 68.6% 100%, 74.8% 41.9%)"></div>
+        </div>
+        <div class="absolute top-1/2 left-[max(45rem,calc(50%+8rem))] -z-10 -translate-y-1/2 transform-gpu blur-2xl" aria-hidden="true">
+            <div class="aspect-[577/310] w-[36.0625rem] bg-gradient-to-r from-[#9089fc] to-[#9089fc] opacity-30" style="clip-path: polygon(74.8% 41.9%, 97.2% 73.2%, 100% 34.9%, 92.5% 0.4%, 87.5% 0%, 75% 28.6%, 58.5% 54.6%, 50.1% 56.8%, 46.9% 44%, 48.3% 17.4%, 24.7% 53.9%, 0% 27.9%, 11.9% 74.2%, 24.9% 54.1%, 68.6% 100%, 74.8% 41.9%)"></div>
+        </div>
+
+        <!-- Banner content -->
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <p class="text-sm leading-6 text-gray-900">
+                <strong class="font-semibold">✨ New Release v1.1</strong>
+                <svg viewBox="0 0 2 2" class="mx-2 inline h-0.5 w-0.5 fill-current" aria-hidden="true">
+                    <circle cx="1" cy="1" r="1" />
+                </svg>
+                nasma.ai is now available on the App Store!
+            </p>
+            <a href="https://apps.apple.com/app/id6740181795" class="flex-none rounded-full bg-gray-900 px-3.5 py-1 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900">
+                Download Now <span aria-hidden="true">&rarr;</span>
+            </a>
+        </div>
+
+        <!-- Close button -->
+        <div class="flex flex-1 justify-end">
+            <button type="button" class="-m-3 p-3 focus-visible:outline-offset-[-4px]" onclick="closeBanner()">
+                <span class="sr-only">Dismiss</span>
+                <svg class="h-5 w-5 text-gray-900" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function closeBanner() {
+            const banner = document.getElementById('banner');
+            banner.style.display = 'none';
+            
+            // Optional: Save to localStorage to keep banner hidden on refresh
+            localStorage.setItem('bannerClosed', 'true');
+        }
+
+        // Check if banner was previously closed
+        document.addEventListener('DOMContentLoaded', function() {
+            if (localStorage.getItem('bannerClosed') === 'true') {
+                document.getElementById('banner').style.display = 'none';
+            }
+        });
+    </script>
+
+    <!-- Add the mesh gradient div right after body opening tag -->
+    <div class="mesh-gradient"></div>
+
+    <!-- Hero Section with Main Content -->
+    <section class="container mx-auto px-4 py-16 mt-24">
+        <div class="max-w-4xl mx-auto text-center" id="about">
+            <div class="flex justify-center items-center mb-8">
+                <svg width="164" height="164" viewBox="0 0 164 164" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0.418769 90.3387C0.279401 88.9588 0.174247 87.5688 0.104168 86.1695H163.896C163.826 87.5688 163.721 88.9588 163.581 90.3387H0.418769ZM0.947947 94.5082C1.16255 95.9104 1.41267 97.3008 1.69736 98.6786H162.303C162.587 97.3008 162.837 95.9104 163.052 94.5082H0.947947ZM3.8863 107.017C3.4465 105.643 3.04198 104.253 2.67378 102.848H161.326C160.958 104.253 160.553 105.643 160.114 107.017H3.8863ZM5.34648 111.187C5.70265 112.122 6.07542 113.048 6.46445 113.966H157.536C157.925 113.048 158.297 112.122 158.654 111.187H5.34648ZM10.5727 122.305C10.0549 121.39 9.55423 120.463 9.07106 119.526H154.929C154.446 120.463 153.945 121.39 153.427 122.305H10.5727ZM14.0162 127.865C14.652 128.805 15.3067 129.732 15.98 130.644H148.02C148.693 129.732 149.348 128.805 149.984 127.865H14.0162ZM23.034 138.983C22.1577 138.076 21.3022 137.149 20.4681 136.203H143.532C142.698 137.149 141.842 138.076 140.966 138.983H23.034ZM28.9644 144.542C30.0916 145.499 31.245 146.426 32.4233 147.321H131.577C132.755 146.426 133.908 145.499 135.036 144.542H28.9644ZM45.93 155.661C44.1645 154.795 42.4346 153.867 40.7432 152.881H123.257C121.565 153.867 119.836 154.795 118.07 155.661H45.93ZM60.753 161.221C67.5295 163.033 74.6519 164 82 164C89.3481 164 96.4705 163.033 103.247 161.221H60.753ZM163.815 76.4409C163.938 78.2781 164 80.1317 164 82H0C0 80.1317 0.0624801 78.2781 0.185465 76.4409H163.815ZM0.418769 73.6613C0.607909 71.7885 0.860064 69.9344 1.17308 68.101H162.827C163.14 69.9344 163.392 71.7885 163.581 73.6613H0.418769ZM3.45513 58.3727C2.7714 60.6489 2.1839 62.9667 1.69736 65.3214H162.303C161.816 62.9667 161.229 60.6489 160.545 58.3727H3.45513ZM5.89051 51.4236C5.33887 52.7954 4.82323 54.1857 4.34479 55.5931H159.655C159.177 54.1857 158.661 52.7954 158.109 51.4236H157.05H5.89051ZM7.06855 48.6439C7.91202 46.752 8.82504 44.8979 9.80436 43.0849H154.196C155.175 44.8979 156.088 46.752 156.931 48.6439H7.06855ZM15.2879 34.308C13.9001 36.2458 12.5946 38.2466 11.3766 40.3052H152.623C151.497 38.4013 150.296 36.547 149.024 34.7461H15.2879V34.308ZM17.0284 31.9665C18.9007 29.5388 20.9061 27.2189 23.0335 25.0178H140.966C143.094 27.2189 145.099 29.5388 146.972 31.9665H17.0284ZM82 0C103.724 0 123.476 8.44806 138.148 22.2382H25.8523C40.5244 8.44806 60.2756 0 82 0Z" fill="url(#paint0_linear_984_794)"/>
+                    <defs>
+                    <linearGradient id="paint0_linear_984_794" x1="82" y1="0" x2="82" y2="164" gradientUnits="userSpaceOnUse">
+                    <stop/>
+                    <stop offset="1" stop-color="#444444"/>
+                    </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            
+            <h1 class="text-4xl md:text-5xl font-bold mb-8">nasma.ai</h1>
+            <p class="text-xl md:text-2xl text-gray-600 mb-8">Your personal companion for spiritual growth, built with simplicity, modernity, and mindfulness at its core.</p>
+            
+            <p class="text-xl md:text-2xl text-gray-600 mb-8">
+                <a href="https://apps.apple.com/app/id6740181795" class="inline-block transition duration-300 mb-8" target="_blank">
+                <img src="images/download-appstore.png" alt="Download on the App Store" class="w-full max-w-16 md:max-w-20">
+                </a>
+            </p>
+        </div>
+    </section>
+
+    <section id="features" class="container mx-auto px-4 py-16 mt-20">
+        <h2 class="text-3xl font-bold text-center mb-12">Features</h2>
+        
+        <!-- Feature 1: AI Companion -->
+        <div id="ai-companion" class="flex flex-col md:flex-row items-center mb-20">
+            <div class="md:w-1/2 pr-8">
+                <h3 class="text-2xl font-bold mb-4">Salam 👋 I'm Nasma</h3>
+                <p class="text-gray-600 mb-4">
+                    I'm designed to help you stay connected with your faith, offering personalized guidance and an experience that feels like a gentle breeze of serenity in your busy day. 
+                </p>
+                <p class="text-gray-600 mb-4">    
+                    Chat with me in any language you prefer - whether it's Arabic, English, or any other language. I can help you explore and understand the deep meanings of any Surah from the Quran, provide you with specific duas for any situation, and offer spiritual guidance tailored just for you. 
+                </p>
+                <p class="text-gray-600 mb-4">   
+                    And rest assured, our conversations are completely private and secure, creating a safe space for your spiritual journey.
+                </p>
+                <p class="text-gray-600 mb-4">   
+                    Powered by OpenAI. 
+                </p>
+            </div>
+            <div class="md:w-1/2">
+                <div class="iphone-mockup">
+                    <div class="iphone-frame">
+                        <div class="iphone-button volume-up"></div>
+                        <div class="iphone-button volume-down"></div>
+                        <div class="iphone-button power"></div>
+                        <div class="iphone-screen">
+                            <div class="iphone-notch"></div>
+                            <div class="video-container">
+                                <video autoplay loop muted playsinline>
+                                    <source src="videos/ai-nasma.webm" type="video/webm">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feature 2: Prayer Times -->
+        <div id="prayer-times" class="flex flex-col md:flex-row items-center mb-20">
+            <div class="md:w-1/2">
+                <div class="iphone-mockup">
+                    <div class="iphone-frame">
+                        <div class="iphone-button volume-up"></div>
+                        <div class="iphone-button volume-down"></div>
+                        <div class="iphone-button power"></div>
+                        <div class="iphone-screen">
+                            <div class="iphone-notch"></div>
+                            <div class="video-container">
+                                <video autoplay loop muted playsinline>
+                                    <source src="videos/prayer.webm" type="video/webm">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="md:w-1/2 pl-8">
+                <h3 class="text-2xl font-bold mb-4">Accurate Prayer Times</h3>
+                <p class="text-gray-600 mb-4">
+                    Stay connected with accurate prayer times, customized to your location.<br> 
+                    Receive notifications and never miss a prayer again.
+                </p>
+                <p class="text-gray-600 mb-4">
+                    Powered by <a href="https://www.aladhan.com/" target="_blank">Aladhan</a>. 
+                </p>
+                
+            </div>
+        </div>
+
+        <!-- Feature x: Prayer Tracker -->
+        <div class="flex flex-col md:flex-row items-center mb-20">
+            <div class="md:w-1/2 pr-8">
+                <h3 class="text-2xl font-bold mb-4">Prayer Tracker</h3>
+                <p class="text-gray-600 mb-4">
+                    Keep track of your daily prayers with our prayer tracker. <br>
+                    Simple and accurate guidance wherever you are.
+                </p>
+            </div>
+            <div class="md:w-1/2">
+                <div class="iphone-mockup">
+                    <div class="iphone-frame">
+                        <div class="iphone-button volume-up"></div>
+                        <div class="iphone-button volume-down"></div>
+                        <div class="iphone-button power"></div>
+                        <div class="iphone-screen">
+                            <div class="iphone-notch"></div>
+                            <div class="video-container">
+                                <video autoplay loop muted playsinline>
+                                    <source src="videos/tracker.webm" type="video/webm">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- Feature 4: Quran Reading -->
+        <div id="quran" class="flex flex-col md:flex-row items-center mb-20">
+            <div class="md:w-1/2">
+                <div class="iphone-mockup">
+                    <div class="iphone-frame">
+                        <div class="iphone-button volume-up"></div>
+                        <div class="iphone-button volume-down"></div>
+                        <div class="iphone-button power"></div>
+                        <div class="iphone-screen">
+                            <div class="iphone-notch"></div>
+                            <div class="video-container">
+                                <video autoplay loop muted playsinline>
+                                    <source src="videos/surah.webm" type="video/webm">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="md:w-1/2 pl-8">
+                <h3 class="text-2xl font-bold mb-4">Surah Playlist</h3>
+                <p class="text-gray-600 mb-4">
+                    Listen to all 114 surahs with beautiful typography and translations. <br>
+                    Track your progress and set daily reading goals.
+                </p>
+                <p class="text-gray-600 mb-4"></p>
+                    Powered by <a href="https://alquran.cloud/" target="_blank">Alquran.cloud</a>. 
+                </p>
+            </div>
+        </div>
+
+        <!-- Feature 5: Dhikr Counter -->
+        <div id="dhikr" class="flex flex-col md:flex-row items-center mb-20">
+            <div class="md:w-1/2 pr-8">
+                <h3 class="text-2xl font-bold mb-4">Tasbih/Dhikr </h3>
+                <p class="text-gray-600 mb-4">
+                    Keep track of your daily dhikr with our digital counter. <br>
+                    Set custom phrases and track your spiritual progress.
+                </p>
+            </div>
+            <div class="md:w-1/2">
+                <div class="iphone-mockup">
+                    <div class="iphone-frame">
+                        <div class="iphone-button volume-up"></div>
+                        <div class="iphone-button volume-down"></div>
+                        <div class="iphone-button power"></div>
+                        <div class="iphone-screen">
+                            <div class="iphone-notch"></div>
+                            <div class="video-container">
+                                <video autoplay loop muted playsinline>
+                                    <source src="videos/tasbih.webm" type="video/webm">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feature 3: Qibla Direction -->
+        <div id="qibla" class="flex flex-col md:flex-row items-center mb-20">
+            <div class="md:w-1/2">
+                <div class="iphone-mockup">
+                    <div class="iphone-frame">
+                        <div class="iphone-button volume-up"></div>
+                        <div class="iphone-button volume-down"></div>
+                        <div class="iphone-button power"></div>
+                        <div class="iphone-screen">
+                            <div class="iphone-notch"></div>
+                            <div class="video-container">
+                                <video autoplay loop muted playsinline>
+                                    <source src="videos/qibla.webm" type="video/webm">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="md:w-1/2 pl-8">
+                <h3 class="text-2xl font-bold mb-4">Precise Qibla Direction</h3>
+                <p class="text-gray-600 mb-4">
+                    Find the Qibla direction instantly with our precise compass. <br>
+                    Simple and accurate guidance wherever you are.
+                </p>
+                <p class="text-gray-600 mb-4"></p>
+                    Powered by <a href="https://www.aladhan.com/" target="_blank">Aladhan</a>. 
+                </p>
+            </div>
+        </div>
+
+        
+    </section>
+
+    <section id="about" class="container mx-auto px-4 py-16">
+        <h2 class="text-3xl font-bold text-center mb-12">About</h2>
+        <p class="text-gray-600 mb-4 max-w-2xl mx-auto">
+            nasma.ai provides a beautifully crafted, minimalistic interface that delivers accurate prayer times, Qibla direction, and thoughtful reminders. Whether you're starting your spiritual journey or looking to enhance your daily practices, nasma.ai ensures your connection to faith is always within reach.
+        </p>
+        <p class="text-gray-600 mb-4 max-w-2xl mx-auto">
+            Our vision is to create a space where technology and spirituality meet, offering personalized guidance and an experience that feels like a gentle breeze of serenity in your busy day. With features like dynamic themes, intelligent notifications, and a design inspired by modern aesthetics, nasma.ai makes practicing your faith not only fulfilling but also delightful.
+        </p>
+    </section>
+
+    <!-- Mobile Carousel - positioned right before footer -->
+    <section class="mobile-carousel container mx-auto px-4 py-16">
+        <div class="mobile-feature-text">
+            <h3 class="text-2xl font-bold mb-4" id="feature-title">Salam 👋 I'm Nasma</h3>
+            <p class="text-gray-600 mb-4" id="feature-description">
+                I'm designed to help you stay connected with your faith, offering personalized guidance and an experience that feels like a gentle breeze of serenity in your busy day.
+            </p>
+        </div>
+
+        <div class="iphone-mockup">
+            <div class="iphone-frame">
+                <div class="iphone-button volume-up"></div>
+                <div class="iphone-button volume-down"></div>
+                <div class="iphone-button power"></div>
+                <div class="iphone-screen">
+                    <div class="iphone-notch"></div>
+                    <div class="video-container">
+                        <video class="carousel-video active" autoplay loop muted playsinline data-index="0">
+                            <source src="videos/ai-nasma.webm" type="video/webm">
+                        </video>
+                        <video class="carousel-video" autoplay loop muted playsinline data-index="1">
+                            <source src="videos/prayer.webm" type="video/webm">
+                        </video>
+                        <video class="carousel-video" autoplay loop muted playsinline data-index="2">
+                            <source src="videos/prayer.webm" type="video/webm">
+                        </video>
+                        <video class="carousel-video" autoplay loop muted playsinline data-index="3">
+                            <source src="videos/qibla.webm" type="video/webm">
+                        </video>
+                        <video class="carousel-video" autoplay loop muted playsinline data-index="4">
+                            <source src="videos/surah.webm" type="video/webm">
+                        </video>
+                        <video class="carousel-video" autoplay loop muted playsinline data-index="5">
+                            <source src="videos/tasbih.webm" type="video/webm">
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-controls">
+            <div class="carousel-dot active" data-index="0"></div>
+            <div class="carousel-dot" data-index="1"></div>
+            <div class="carousel-dot" data-index="2"></div>
+            <div class="carousel-dot" data-index="3"></div>
+            <div class="carousel-dot" data-index="4"></div>
+            <div class="carousel-dot" data-index="5"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 text-gray-600 mt-20">
+        <!-- Main Footer Content -->
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="mb-8 md:mb-0">
+                    <h3 class="text-xl font-bold mb-4">nasma.ai</h3>
+                    <p class="mb-4">prayer. purpose. peace.</p>
+                    <div class="flex space-x-4">
+                        <!-- Social Media Links -->
+                        <!-- <a href="#" class="text-gray-400 hover:text-gray-600">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+                            </svg>
+                        </a> -->
+                        <a href="https://www.instagram.com/asknasma/" class="text-gray-400 hover:text-gray-600">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#features" class="hover:text-purple-600 transition duration-300">Features</a></li>
+                        <li><a href="#about" class="hover:text-purple-600 transition duration-300">About Us</a></li>
+                        <!-- <li><a href="#contact" class="hover:text-purple-600 transition duration-300">Contact</a></li> -->
+                    </ul>
+                </div>
+
+                <!-- Features -->
+                <div class="footer-features">
+                    <h3 class="text-lg font-semibold mb-4">Features</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#ai-companion" class="hover:text-purple-600 transition duration-300">AI Companion</a></li>
+                        <li><a href="#prayer-times" class="hover:text-purple-600 transition duration-300">Prayer Times</a></li>
+                        <li><a href="#qibla" class="hover:text-purple-600 transition duration-300">Qibla Direction</a></li>
+                        <li><a href="#quran" class="hover:text-purple-600 transition duration-300">Surah Playlist</a></li>
+                        <li><a href="#dhikr" class="hover:text-purple-600 transition duration-300">Tasbih/Dhikr</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+                    <ul class="space-y-2">
+                        <li>Abu Dhabi, UAE</li>
+                        <li><a href="mailto:salam@nasma.ai" class="hover:text-purple-600 transition duration-300">salam@nasma.ai</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Footer -->
+        <div class="border-t border-gray-200">
+            <div class="container mx-auto px-4 py-6">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p>&copy; <span id="year"></span> nasma.ai. ❤️ abu dhabi. bismillah.</p>
+                    <div class="mt-4 md:mt-0">
+                        <a href="privacy.txt" class="text-sm mr-4 hover:text-purple-600 transition duration-300">Privacy Policy</a>
+                        <!-- <a href="terms.txt" class="text-sm hover:text-purple-600 transition duration-300">Terms of Service</a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
     </footer>
     <script>
         document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+
+    <!-- Schema.org JSON-LD for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MobileApplication",
+        "name": "Nasma.ai",
+        "applicationCategory": "LifestyleApplication",
+        "operatingSystem": "iOS",
+        "description": "A personal Islamic companion app for spiritual growth, offering accurate prayer times, Qibla direction, and mindful reminders.",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "Nasma.ai",
+            "url": "https://nasma.ai"
+        }
+    }
+    </script>
+
+    <!-- Desktop Features (existing code) -->
+    <div class="desktop-features">
+        <!-- Your existing feature sections -->
+    </div>
+
+    <!-- Add this script section -->
+    <script>
+        const features = [
+            {
+                title: "Salam 👋 I'm Nasma",
+                description: "I'm designed to help you stay connected with your faith, offering personalized guidance and an experience that feels like a gentle breeze of serenity in your busy day."
+            },
+            {
+                title: "Prayer Times",
+                description: "Stay connected with accurate prayer times, customized to your location. Receive notifications and never miss a prayer again."
+            },
+            {
+                title: "Prayer Tracker",
+                description: "Keep track of your daily prayers with our prayer tracker. Simple and accurate guidance wherever you are."
+            },
+            {
+                title: "Qibla Direction",
+                description: "Find the Qibla direction instantly with our precise compass. Simple and accurate guidance wherever you are."
+            },
+            {
+                title: "Surah Playlist",
+                description: "Listen to all 114 surahs with beautiful typography and translations. Track your progress and set daily reading goals."
+            },
+            {
+                title: "Tasbih/Dhikr",
+                description: "Keep track of your daily dhikr with our digital counter. Set custom phrases and track your spiritual progress."
+            }
+        ];
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const dots = document.querySelectorAll('.carousel-dot');
+            const videos = document.querySelectorAll('.carousel-video');
+            const titleElement = document.getElementById('feature-title');
+            const descriptionElement = document.getElementById('feature-description');
+
+            function updateCarousel(index) {
+                // Update dots
+                dots.forEach(dot => dot.classList.remove('active'));
+                dots[index].classList.add('active');
+
+                // Update videos
+                videos.forEach(video => {
+                    video.classList.remove('active');
+                    video.pause();
+                });
+                videos[index].classList.add('active');
+                videos[index].play();
+
+                // Update text
+                titleElement.textContent = features[index].title;
+                descriptionElement.textContent = features[index].description;
+            }
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const index = parseInt(dot.dataset.index);
+                    updateCarousel(index);
+                });
+            });
+
+            // Optional: Auto-advance carousel
+            let currentIndex = 0;
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % dots.length;
+                updateCarousel(currentIndex);
+            }, 5000); // Change slide every 5 seconds
+        });
     </script>
 </body>
 </html> 
