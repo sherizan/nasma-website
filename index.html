@@ -915,40 +915,5 @@
         }
     }
     </script>
-
-    <!-- Desktop Features (existing code) -->
-    <div class="desktop-features">
-        <!-- Your existing feature sections -->
-    </div>
-
-    <!-- Add this script to handle video loading and errors -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const videos = document.querySelectorAll('video');
-            
-            videos.forEach(video => {
-                // Handle video loading errors
-                video.addEventListener('error', function(e) {
-                    const img = video.querySelector('img');
-                    if (img) {
-                        video.style.display = 'none';
-                        img.style.display = 'block';
-                    }
-                }, true);
-
-                // Optimize for mobile
-                if (window.matchMedia('(max-width: 768px)').matches) {
-                    video.setAttribute('preload', 'metadata');
-                }
-
-                // Check if video can play
-                video.addEventListener('canplay', function() {
-                    video.play().catch(function(error) {
-                        console.log("Video autoplay failed:", error);
-                    });
-                });
-            });
-        });
-    </script>
 </body>
 </html> 
