@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs - nasma.ai</title>
+    <!-- Import Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Import Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Import Tailwind Typography Plugin -->
+    <link href="https://cdn.jsdelivr.net/npm/@tailwindcss/typography@0.5.10/dist/typography.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        /* Apply Space Grotesk font to h1 */
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Apply Space Grotesk font to all headings and body text */
+        body, h1, h2, h3, h4, h5, h6, p, a, span, div {
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        /* Article content styles */
+        .prose h2 {
+            font-size: 1.875rem;
+            line-height: 2.25rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #1a202c;
+        }
+
+        .prose p {
+            margin-top: 1.25rem;
+            margin-bottom: 1.25rem;
+            line-height: 1.75;
+            color: #4a5568;
+        }
+
+        .prose .lead {
+            font-size: 1.25rem;
+            line-height: 1.75;
+            color: #2d3748;
+            margin-bottom: 2rem;
+        }
+    </style>
+
+    <!-- FAQ Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [{
+            "@type": "Question",
+            "name": "What makes nasma.ai different from other Muslim prayer apps like Muslim Pro or Islamic Finder?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "nasma.ai combines the accuracy of traditional Islamic apps with modern AI technology. Unlike other Muslim apps, we offer a personalized AI companion that understands your spiritual journey, while providing essential features like precise Salah times, Qibla direction, and daily Islamic reminders."
+            }
+        }, {
+            "@type": "Question",
+            "name": "How accurate are the prayer times and Adhan notifications in nasma.ai?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Our prayer times and Adhan notifications are highly accurate, powered by reliable astronomical calculations. Like trusted apps such as Al-Moazin, we use precise location data and standard calculation methods approved by Islamic scholars."
+            }
+        }, {
+            "@type": "Question",
+            "name": "Does nasma.ai include Quran features like other Islamic apps?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, nasma.ai offers comprehensive Quran features similar to dedicated Quran apps like iQra. You can access the complete Quran with translations, beautiful recitations, and a unique AI-powered feature that helps you understand the context and meaning of verses."
+            }
+        }]
+    }
+    </script>
+
+    <!-- Mobile App Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MobileApplication",
+        "name": "nasma.ai - Muslim Prayer Times & AI Assistant",
+        "operatingSystem": "iOS",
+        "applicationCategory": "Lifestyle",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "ratingCount": "1000"
+        },
+        "featureList": [
+            "Prayer Times",
+            "Qibla Direction",
+            "AI Muslim Assistant",
+            "Quran with Translation",
+            "Islamic Reminders",
+            "Ramadan Planner",
+            "Zakat Calculator",
+            "Halal Time Management"
+        ]
+    }
+    </script>
+
+    <!-- Organization Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "nasma.ai",
+        "url": "https://nasma.ai",
+        "logo": "https://nasma.ai/images/nasma_logo.png",
+        "sameAs": [
+            "https://www.instagram.com/asknasma",
+            "https://www.linkedin.com/company/nasma-ai"
+        ],
+        "description": "nasma.ai is an AI-powered Muslim prayer app offering accurate prayer times, Qibla direction, and spiritual growth tools.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Abu Dhabi",
+            "addressCountry": "UAE"
+        }
+    }
+    </script>
+
+    <!-- Software Application Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "nasma.ai",
+        "applicationCategory": "LifestyleApplication",
+        "operatingSystem": "iOS",
+        "downloadUrl": "https://apps.apple.com/app/id6740181795",
+        "softwareVersion": "1.0",
+        "description": "An AI-powered Muslim prayer app with accurate prayer times, Qibla direction, and spiritual growth tools.",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "nasma.ai"
+        }
+    }
+    </script>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Top Navigation Bar -->
+    <nav class="bg-white shadow-sm fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo/Home -->
+                <a href="/" class="flex items-center space-x-2">
+                    <span class="text-xl font-bold">nasma.ai</span>
+                </a>
+
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/articles" class="text-gray-600 hover:text-purple-600 transition duration-300">Articles</a>
+                    <a href="/faq.html" class="text-gray-600 hover:text-purple-600 transition duration-300">FAQs</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button type="button" class="text-gray-600 hover:text-gray-900 focus:outline-none" onclick="toggleMobileMenu()">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden pb-4">
+                <a href="/articles" class="block py-2 text-gray-600 hover:text-purple-600 transition duration-300">Articles</a>
+                <a href="/faq.html" class="block py-2 text-gray-600 hover:text-purple-600 transition duration-300">FAQs</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Add a spacer to prevent content from hiding behind the fixed nav -->
+    <div class="h-16"></div>
+
+    <!-- FAQ Content -->
+    <div class="container mx-auto px-4 py-16">
+        <h1 class="text-4xl font-bold text-center mb-12">Frequently Asked Questions</h1>
+        
+        <div class="max-w-3xl mx-auto space-y-8">
+            <!-- Core Features -->
+            <div class="border-b border-gray-200 pb-8">
+                <h3 class="text-xl font-semibold mb-4">What makes nasma.ai different from other Muslim prayer apps like Muslim Pro or Islamic Finder?</h3>
+                <p class="text-gray-600">
+                    nasma.ai combines the accuracy of traditional Islamic apps with modern AI technology. We offer a personalized AI companion that understands your spiritual journey, while providing essential features like precise Salah times, Qibla direction, and daily Islamic reminders. Our app is designed for both spiritual growth and practical Islamic lifestyle management.
+                </p>
+            </div>
+
+            <!-- Prayer Features -->
+            <div class="border-b border-gray-200 pb-8">
+                <h3 class="text-xl font-semibold mb-4">How accurate are the prayer times and Adhan notifications in nasma.ai?</h3>
+                <p class="text-gray-600">
+                    Our prayer times and Adhan notifications are highly accurate, powered by reliable astronomical calculations. Like trusted apps such as Al-Moazin, we use precise location data and standard calculation methods approved by Islamic scholars. You can customize prayer time notifications and Adhan settings according to your preferences.
+                </p>
+            </div>
+
+            <!-- Quran Features -->
+            <div class="border-b border-gray-200 pb-8">
+                <h3 class="text-xl font-semibold mb-4">Does nasma.ai include Quran features like other Islamic apps?</h3>
+                <p class="text-gray-600">
+                    Yes, nasma.ai offers comprehensive Quran features similar to dedicated Quran apps like iQra. You can access the complete Quran with translations, beautiful recitations, and a unique AI-powered feature that helps you understand the context and meaning of verses. Our app also includes a progress tracker for your Quran reading goals.
+                </p>
+            </div>
+
+            <!-- Ramadan Features -->
+            <div class="border-b border-gray-200 pb-8">
+                <h3 class="text-xl font-semibold mb-4">How does nasma.ai help during Ramadan?</h3>
+                <p class="text-gray-600">
+                    nasma.ai includes a comprehensive Ramadan planner with features for tracking fasting days, setting iftar/suhoor alarms, and managing your spiritual goals. The app also provides daily duas, Ramadan-specific reminders, and a Zakat calculator to help you fulfill your religious obligations during this blessed month.
+                </p>
+            </div>
+
+            <!-- Productivity Features -->
+            <div class="border-b border-gray-200 pb-8">
+                <h3 class="text-xl font-semibold mb-4">What Islamic productivity tools does nasma.ai offer?</h3>
+                <p class="text-gray-600">
+                    nasma.ai integrates Islamic lifestyle management with modern productivity tools. Features include Halal time management, daily Islamic reminders, spiritual growth tracking, and a smart prayer scheduler that helps you balance your daily activities with prayer times. Our AI assistant also provides personalized suggestions for maintaining a productive Muslim lifestyle.
+                </p>
+            </div>
+
+            <!-- AI Features -->
+            <div class="border-b border-gray-200 pb-8">
+                <h3 class="text-xl font-semibold mb-4">How does the Muslim Assistant AI feature work in nasma.ai?</h3>
+                <p class="text-gray-600">
+                    Our AI companion serves as your personal Muslim Assistant, offering guidance on Islamic topics, answering questions about faith, and providing daily spiritual insights. Unlike traditional Islamic apps, nasma.ai's AI understands context and can provide personalized advice while strictly adhering to Islamic principles.
+                </p>
+            </div>
+
+            <!-- Privacy -->
+            <div class="border-b border-gray-200 pb-8">
+                <h3 class="text-xl font-semibold mb-4">Is my data private and secure when using nasma.ai's Islamic app features?</h3>
+                <p class="text-gray-600">
+                    Yes, we prioritize your privacy and data security. All your personal information, prayer tracking data, and conversations with the AI companion are completely private and encrypted. We follow strict privacy guidelines and do not share your information with third parties.
+                </p>
+            </div>
+
+            <!-- Availability -->
+            <div class="pb-8">
+                <h3 class="text-xl font-semibold mb-4">Which platforms is nasma.ai available on?</h3>
+                <p class="text-gray-600">
+                    nasma.ai is currently available as a comprehensive Islamic app on iOS through the App Store. We're actively developing versions for other platforms to make our spiritual growth tools and prayer features accessible to more Muslims worldwide. The app is designed to be a complete solution for your Islamic lifestyle needs.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 text-gray-600">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p>&copy; 2024 nasma.ai. ❤️ abu dhabi. bismillah.</p>
+                <div class="mt-4 md:mt-0">
+                    <a href="privacy.txt" class="text-sm mr-4 hover:text-purple-600 transition duration-300">Privacy Policy</a>
+                    <a href="terms.txt" class="text-sm hover:text-purple-600 transition duration-300">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html> 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nasma.ai - Your Personal Islamic Prayer & Spirituality Companion App</title>
+    <title>Nasma.ai — Prayer Times, Qibla Finder & Islamic Reminders</title>
     
     <!-- SEO Meta Tags -->
     <meta name="description" content="Nasma.ai is your personal Islamic companion app for spiritual growth, offering accurate prayer times, Qibla direction, and mindful reminders. Experience faith with modern simplicity.">
@@ -16,10 +16,10 @@
     <meta property="og:url" content="https://nasma.ai">
     
     <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
+    <!-- <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Nasma.ai - Islamic Prayer & Spirituality Companion">
     <meta name="twitter:description" content="Your personal companion for spiritual growth, offering accurate prayer times, Qibla direction, and mindful reminders.">
-    <meta name="twitter:image" content="images/nasma_social_share.jpg">
+    <meta name="twitter:image" content="images/nasma_social_share.jpg"> -->
     
     <!-- Import Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -173,7 +173,8 @@
             height: 100%;
         }
 
-        .video-container video {
+        .video-container video,
+        .video-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -238,6 +239,12 @@
             .iphone-mockup {
                 max-width: 280px; /* Slightly smaller iPhone on mobile */
                 margin: 0 auto;
+            }
+
+            .video-container video {
+                height: 100%;
+                width: 100%;
+                object-position: center;
             }
         }
 
@@ -314,63 +321,82 @@
         body.modal-open {
             overflow: hidden;
         }
+
+        /* Carousel Styles */
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #CBD5E0;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            width: 24px;
+            border-radius: 4px;
+            background-color: #9089fc;
+        }
+
+        .carousel-video {
+            display: none;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-video.active {
+            display: block;
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800">
-    <!-- Add this banner at the top of your body, before any other content -->
-    <div id="banner" class="relative isolate flex items-center gap-x-6 overflow-hidden bg-gray-50 px-6 py-2.5 sm:px-3.5 sm:before:flex-1">
-        <!-- Decorative background elements -->
-        <div class="absolute top-1/2 left-[max(-7rem,calc(50%-52rem))] -z-10 -translate-y-1/2 transform-gpu blur-2xl" aria-hidden="true">
-            <div class="aspect-[577/310] w-[36.0625rem] bg-gradient-to-r from-[#9089fc] to-[#9089fc] opacity-30" style="clip-path: polygon(74.8% 41.9%, 97.2% 73.2%, 100% 34.9%, 92.5% 0.4%, 87.5% 0%, 75% 28.6%, 58.5% 54.6%, 50.1% 56.8%, 46.9% 44%, 48.3% 17.4%, 24.7% 53.9%, 0% 27.9%, 11.9% 74.2%, 24.9% 54.1%, 68.6% 100%, 74.8% 41.9%)"></div>
-        </div>
-        <div class="absolute top-1/2 left-[max(45rem,calc(50%+8rem))] -z-10 -translate-y-1/2 transform-gpu blur-2xl" aria-hidden="true">
-            <div class="aspect-[577/310] w-[36.0625rem] bg-gradient-to-r from-[#9089fc] to-[#9089fc] opacity-30" style="clip-path: polygon(74.8% 41.9%, 97.2% 73.2%, 100% 34.9%, 92.5% 0.4%, 87.5% 0%, 75% 28.6%, 58.5% 54.6%, 50.1% 56.8%, 46.9% 44%, 48.3% 17.4%, 24.7% 53.9%, 0% 27.9%, 11.9% 74.2%, 24.9% 54.1%, 68.6% 100%, 74.8% 41.9%)"></div>
-        </div>
-
-        <!-- Banner content -->
-        <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
-            <p class="text-sm leading-6 text-gray-900">
-                <strong class="font-semibold">✨ New Release v1.1</strong>
-                <svg viewBox="0 0 2 2" class="mx-2 inline h-0.5 w-0.5 fill-current" aria-hidden="true">
-                    <circle cx="1" cy="1" r="1" />
-                </svg>
-                nasma.ai is now available on the App Store!
-            </p>
-            <a href="https://apps.apple.com/app/id6740181795" class="flex-none rounded-full bg-gray-900 px-3.5 py-1 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900">
-                Download Now <span aria-hidden="true">&rarr;</span>
-            </a>
-        </div>
-
-        <!-- Close button -->
-        <div class="flex flex-1 justify-end">
-            <button type="button" class="-m-3 p-3 focus-visible:outline-offset-[-4px]" onclick="closeBanner()">
-                <span class="sr-only">Dismiss</span>
-                <svg class="h-5 w-5 text-gray-900" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
-                </svg>
-            </button>
-        </div>
-    </div>
-
-    <script>
-        function closeBanner() {
-            const banner = document.getElementById('banner');
-            banner.style.display = 'none';
-            
-            // Optional: Save to localStorage to keep banner hidden on refresh
-            localStorage.setItem('bannerClosed', 'true');
-        }
-
-        // Check if banner was previously closed
-        document.addEventListener('DOMContentLoaded', function() {
-            if (localStorage.getItem('bannerClosed') === 'true') {
-                document.getElementById('banner').style.display = 'none';
-            }
-        });
-    </script>
 
     <!-- Add the mesh gradient div right after body opening tag -->
     <div class="mesh-gradient"></div>
+
+    <!-- Top Navigation Bar -->
+    <nav class="bg-white shadow-sm fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo/Home -->
+                <a href="/" class="flex items-center space-x-2">
+                    <span class="text-xl font-bold">nasma.ai</span>
+                </a>
+
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/articles" class="text-gray-600 hover:text-purple-600 transition duration-300">Research</a>
+                    <a href="/faq.html" class="text-gray-600 hover:text-purple-600 transition duration-300">FAQs</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button type="button" class="text-gray-600 hover:text-gray-900 focus:outline-none" onclick="toggleMobileMenu()">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden pb-4">
+                <a href="/articles" class="block py-2 text-gray-600 hover:text-purple-600 transition duration-300">Research</a>
+                <a href="/faq.html" class="block py-2 text-gray-600 hover:text-purple-600 transition duration-300">FAQs</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Add a spacer to prevent content from hiding behind the fixed nav -->
+    <div class="h-16"></div>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
 
     <!-- Hero Section with Main Content -->
     <section class="container mx-auto px-4 py-16 mt-24">
@@ -398,7 +424,7 @@
         </div>
     </section>
 
-    <section id="features" class="container mx-auto px-4 py-16 mt-20">
+    <section id="features" class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-12">Features</h2>
         
         <!-- Feature 1: AI Companion -->
@@ -427,9 +453,13 @@
                         <div class="iphone-screen">
                             <div class="iphone-notch"></div>
                             <div class="video-container">
-                                <video autoplay loop muted playsinline>
+                                <video autoplay loop muted playsinline poster="images/launch.jpg">
+                                    <!-- WebM for modern browsers -->
                                     <source src="videos/ai-nasma.webm" type="video/webm">
-                                    Your browser does not support the video tag.
+                                    <!-- MP4 fallback -->
+                                    <source src="videos/ai-nasma.mp4" type="video/mp4">
+                                    <!-- Fallback image if video fails -->
+                                    <img src="images/launch.jpg" alt="AI Nasma Feature Demo">
                                 </video>
                             </div>
                         </div>
@@ -449,9 +479,13 @@
                         <div class="iphone-screen">
                             <div class="iphone-notch"></div>
                             <div class="video-container">
-                                <video autoplay loop muted playsinline>
+                                <video autoplay loop muted playsinline poster="images/launch.jpg">
+                                    <!-- WebM for modern browsers -->
                                     <source src="videos/prayer.webm" type="video/webm">
-                                    Your browser does not support the video tag.
+                                    <!-- MP4 fallback -->
+                                    <source src="videos/prayer.mp4" type="video/mp4">
+                                    <!-- Fallback image if video fails -->
+                                    <img src="images/launch.jpg" alt="Muslim Prayer Times Feature Demo">
                                 </video>
                             </div>
                         </div>
@@ -489,9 +523,13 @@
                         <div class="iphone-screen">
                             <div class="iphone-notch"></div>
                             <div class="video-container">
-                                <video autoplay loop muted playsinline>
+                                <video autoplay loop muted playsinline poster="images/launch.jpg">
+                                    <!-- WebM for modern browsers -->
                                     <source src="videos/tracker.webm" type="video/webm">
-                                    Your browser does not support the video tag.
+                                    <!-- MP4 fallback -->
+                                    <source src="videos/tracker.mp4" type="video/mp4">
+                                    <!-- Fallback image if video fails -->
+                                    <img src="images/launch.jpg" alt="Prayer Tracker Feature Demo">
                                 </video>
                             </div>
                         </div>
@@ -512,9 +550,13 @@
                         <div class="iphone-screen">
                             <div class="iphone-notch"></div>
                             <div class="video-container">
-                                <video autoplay loop muted playsinline>
+                                <video autoplay loop muted playsinline poster="images/launch.jpg">
+                                    <!-- WebM for modern browsers -->
                                     <source src="videos/surah.webm" type="video/webm">
-                                    Your browser does not support the video tag.
+                                    <!-- MP4 fallback -->
+                                    <source src="videos/surah.mp4" type="video/mp4">
+                                    <!-- Fallback image if video fails -->
+                                    <img src="images/launch.jpg" alt="Surah Playlist Feature Demo">
                                 </video>
                             </div>
                         </div>
@@ -551,9 +593,13 @@
                         <div class="iphone-screen">
                             <div class="iphone-notch"></div>
                             <div class="video-container">
-                                <video autoplay loop muted playsinline>
+                                <video autoplay loop muted playsinline poster="images/launch.jpg">
+                                    <!-- WebM for modern browsers -->
                                     <source src="videos/tasbih.webm" type="video/webm">
-                                    Your browser does not support the video tag.
+                                    <!-- MP4 fallback -->
+                                    <source src="videos/tasbih.mp4" type="video/mp4">
+                                    <!-- Fallback image if video fails -->
+                                    <img src="images/launch.jpg" alt="Tasbih/Dhikr Feature Demo">
                                 </video>
                             </div>
                         </div>
@@ -573,9 +619,13 @@
                         <div class="iphone-screen">
                             <div class="iphone-notch"></div>
                             <div class="video-container">
-                                <video autoplay loop muted playsinline>
+                                <video autoplay loop muted playsinline poster="images/launch.jpg">
+                                    <!-- WebM for modern browsers -->
                                     <source src="videos/qibla.webm" type="video/webm">
-                                    Your browser does not support the video tag.
+                                    <!-- MP4 fallback -->
+                                    <source src="videos/qibla.mp4" type="video/mp4">
+                                    <!-- Fallback image if video fails -->
+                                    <img src="images/launch.jpg" alt="Qibla Direction Feature Demo">
                                 </video>
                             </div>
                         </div>
@@ -607,53 +657,168 @@
         </p>
     </section>
 
-    <!-- Mobile Carousel - positioned right before footer -->
-    <section class="mobile-carousel container mx-auto px-4 py-16">
-        <div class="mobile-feature-text">
-            <h3 class="text-2xl font-bold mb-4" id="feature-title">Salam 👋 I'm Nasma</h3>
-            <p class="text-gray-600 mb-4" id="feature-description">
-                I'm designed to help you stay connected with your faith, offering personalized guidance and an experience that feels like a gentle breeze of serenity in your busy day.
-            </p>
-        </div>
-
-        <div class="iphone-mockup">
-            <div class="iphone-frame">
-                <div class="iphone-button volume-up"></div>
-                <div class="iphone-button volume-down"></div>
-                <div class="iphone-button power"></div>
-                <div class="iphone-screen">
-                    <div class="iphone-notch"></div>
-                    <div class="video-container">
-                        <video class="carousel-video active" autoplay loop muted playsinline data-index="0">
-                            <source src="videos/ai-nasma.webm" type="video/webm">
-                        </video>
-                        <video class="carousel-video" autoplay loop muted playsinline data-index="1">
-                            <source src="videos/prayer.webm" type="video/webm">
-                        </video>
-                        <video class="carousel-video" autoplay loop muted playsinline data-index="2">
-                            <source src="videos/prayer.webm" type="video/webm">
-                        </video>
-                        <video class="carousel-video" autoplay loop muted playsinline data-index="3">
-                            <source src="videos/qibla.webm" type="video/webm">
-                        </video>
-                        <video class="carousel-video" autoplay loop muted playsinline data-index="4">
-                            <source src="videos/surah.webm" type="video/webm">
-                        </video>
-                        <video class="carousel-video" autoplay loop muted playsinline data-index="5">
-                            <source src="videos/tasbih.webm" type="video/webm">
-                        </video>
+    <!-- Mobile Features Section (replaces mobile carousel) -->
+    <section class="md:hidden container mx-auto px-4 py-16">
+        <!-- Feature 1: AI Companion -->
+        <div class="mb-16">
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-bold mb-4">Salam 👋 I'm Nasma</h3>
+                <p class="text-gray-600">
+                    I'm designed to help you stay connected with your faith, offering personalized guidance and an experience that feels like a gentle breeze of serenity in your busy day.
+                </p>
+            </div>
+            <div class="iphone-mockup mx-auto">
+                <div class="iphone-frame">
+                    <div class="iphone-button volume-up"></div>
+                    <div class="iphone-button volume-down"></div>
+                    <div class="iphone-button power"></div>
+                    <div class="iphone-screen">
+                        <div class="iphone-notch"></div>
+                        <div class="video-container">
+                            <video autoplay loop muted playsinline poster="images/launch.jpg">
+                                <source src="videos/ai-nasma.webm" type="video/webm">
+                                <source src="videos/ai-nasma.mp4" type="video/mp4">
+                                <img src="images/launch.jpg" alt="AI Nasma Feature Demo">
+                            </video>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="carousel-controls">
-            <div class="carousel-dot active" data-index="0"></div>
-            <div class="carousel-dot" data-index="1"></div>
-            <div class="carousel-dot" data-index="2"></div>
-            <div class="carousel-dot" data-index="3"></div>
-            <div class="carousel-dot" data-index="4"></div>
-            <div class="carousel-dot" data-index="5"></div>
+        <!-- Feature 2: Prayer Times -->
+        <div class="mb-16">
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-bold mb-4">Prayer Times</h3>
+                <p class="text-gray-600">
+                    Stay connected with accurate prayer times, customized to your location. Receive notifications and never miss a prayer again.
+                </p>
+            </div>
+            <div class="iphone-mockup mx-auto">
+                <div class="iphone-frame">
+                    <div class="iphone-button volume-up"></div>
+                    <div class="iphone-button volume-down"></div>
+                    <div class="iphone-button power"></div>
+                    <div class="iphone-screen">
+                        <div class="iphone-notch"></div>
+                        <div class="video-container">
+                            <video autoplay loop muted playsinline poster="images/launch.jpg">
+                                <source src="videos/prayer.webm" type="video/webm">
+                                <source src="videos/prayer.mp4" type="video/mp4">
+                                <img src="images/launch.jpg" alt="Prayer Times Feature Demo">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feature 3: Prayer Tracker -->
+        <div class="mb-16">
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-bold mb-4">Prayer Tracker</h3>
+                <p class="text-gray-600">
+                    Keep track of your daily prayers with our prayer tracker. Simple and accurate guidance wherever you are.
+                </p>
+            </div>
+            <div class="iphone-mockup mx-auto">
+                <div class="iphone-frame">
+                    <div class="iphone-button volume-up"></div>
+                    <div class="iphone-button volume-down"></div>
+                    <div class="iphone-button power"></div>
+                    <div class="iphone-screen">
+                        <div class="iphone-notch"></div>
+                        <div class="video-container">
+                            <video autoplay loop muted playsinline poster="images/launch.jpg">
+                                <source src="videos/tracker.webm" type="video/webm">
+                                <source src="videos/tracker.mp4" type="video/mp4">
+                                <img src="images/launch.jpg" alt="Prayer Tracker Feature Demo">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feature 4: Qibla Direction -->
+        <div class="mb-16">
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-bold mb-4">Qibla Direction</h3>
+                <p class="text-gray-600">
+                    Find the Qibla direction instantly with our precise compass. Simple and accurate guidance wherever you are.
+                </p>
+            </div>
+            <div class="iphone-mockup mx-auto">
+                <div class="iphone-frame">
+                    <div class="iphone-button volume-up"></div>
+                    <div class="iphone-button volume-down"></div>
+                    <div class="iphone-button power"></div>
+                    <div class="iphone-screen">
+                        <div class="iphone-notch"></div>
+                        <div class="video-container">
+                            <video autoplay loop muted playsinline poster="images/launch.jpg">
+                                <source src="videos/qibla.webm" type="video/webm">
+                                <source src="videos/qibla.mp4" type="video/mp4">
+                                <img src="images/launch.jpg" alt="Qibla Direction Feature Demo">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feature 5: Surah Playlist -->
+        <div class="mb-16">
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-bold mb-4">Surah Playlist</h3>
+                <p class="text-gray-600">
+                    Listen to all 114 surahs with beautiful typography and translations. Track your progress and set daily reading goals.
+                </p>
+            </div>
+            <div class="iphone-mockup mx-auto">
+                <div class="iphone-frame">
+                    <div class="iphone-button volume-up"></div>
+                    <div class="iphone-button volume-down"></div>
+                    <div class="iphone-button power"></div>
+                    <div class="iphone-screen">
+                        <div class="iphone-notch"></div>
+                        <div class="video-container">
+                            <video autoplay loop muted playsinline poster="images/launch.jpg">
+                                <source src="videos/surah.webm" type="video/webm">
+                                <source src="videos/surah.mp4" type="video/mp4">
+                                <img src="images/launch.jpg" alt="Surah Playlist Feature Demo">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feature 6: Tasbih/Dhikr -->
+        <div class="mb-16">
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-bold mb-4">Tasbih/Dhikr</h3>
+                <p class="text-gray-600">
+                    Keep track of your daily dhikr with our digital counter. Set custom phrases and track your spiritual progress.
+                </p>
+            </div>
+            <div class="iphone-mockup mx-auto">
+                <div class="iphone-frame">
+                    <div class="iphone-button volume-up"></div>
+                    <div class="iphone-button volume-down"></div>
+                    <div class="iphone-button power"></div>
+                    <div class="iphone-screen">
+                        <div class="iphone-notch"></div>
+                        <div class="video-container">
+                            <video autoplay loop muted playsinline poster="images/launch.jpg">
+                                <source src="videos/tasbih.webm" type="video/webm">
+                                <source src="videos/tasbih.mp4" type="video/mp4">
+                                <img src="images/launch.jpg" alt="Tasbih/Dhikr Feature Demo">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -687,7 +852,7 @@
                     <ul class="space-y-2">
                         <li><a href="#features" class="hover:text-purple-600 transition duration-300">Features</a></li>
                         <li><a href="#about" class="hover:text-purple-600 transition duration-300">About Us</a></li>
-                        <!-- <li><a href="#contact" class="hover:text-purple-600 transition duration-300">Contact</a></li> -->
+                        <li><a href="faq.html" class="hover:text-purple-600 transition duration-300">FAQs</a></li>
                     </ul>
                 </div>
 
@@ -740,11 +905,6 @@
         "applicationCategory": "LifestyleApplication",
         "operatingSystem": "iOS",
         "description": "A personal Islamic companion app for spiritual growth, offering accurate prayer times, Qibla direction, and mindful reminders.",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-        },
         "author": {
             "@type": "Organization",
             "name": "Nasma.ai",
@@ -758,72 +918,33 @@
         <!-- Your existing feature sections -->
     </div>
 
-    <!-- Add this script section -->
+    <!-- Add this script to handle video loading and errors -->
     <script>
-        const features = [
-            {
-                title: "Salam 👋 I'm Nasma",
-                description: "I'm designed to help you stay connected with your faith, offering personalized guidance and an experience that feels like a gentle breeze of serenity in your busy day."
-            },
-            {
-                title: "Prayer Times",
-                description: "Stay connected with accurate prayer times, customized to your location. Receive notifications and never miss a prayer again."
-            },
-            {
-                title: "Prayer Tracker",
-                description: "Keep track of your daily prayers with our prayer tracker. Simple and accurate guidance wherever you are."
-            },
-            {
-                title: "Qibla Direction",
-                description: "Find the Qibla direction instantly with our precise compass. Simple and accurate guidance wherever you are."
-            },
-            {
-                title: "Surah Playlist",
-                description: "Listen to all 114 surahs with beautiful typography and translations. Track your progress and set daily reading goals."
-            },
-            {
-                title: "Tasbih/Dhikr",
-                description: "Keep track of your daily dhikr with our digital counter. Set custom phrases and track your spiritual progress."
-            }
-        ];
-
         document.addEventListener('DOMContentLoaded', function() {
-            const dots = document.querySelectorAll('.carousel-dot');
-            const videos = document.querySelectorAll('.carousel-video');
-            const titleElement = document.getElementById('feature-title');
-            const descriptionElement = document.getElementById('feature-description');
+            const videos = document.querySelectorAll('video');
+            
+            videos.forEach(video => {
+                // Handle video loading errors
+                video.addEventListener('error', function(e) {
+                    const img = video.querySelector('img');
+                    if (img) {
+                        video.style.display = 'none';
+                        img.style.display = 'block';
+                    }
+                }, true);
 
-            function updateCarousel(index) {
-                // Update dots
-                dots.forEach(dot => dot.classList.remove('active'));
-                dots[index].classList.add('active');
+                // Optimize for mobile
+                if (window.matchMedia('(max-width: 768px)').matches) {
+                    video.setAttribute('preload', 'metadata');
+                }
 
-                // Update videos
-                videos.forEach(video => {
-                    video.classList.remove('active');
-                    video.pause();
-                });
-                videos[index].classList.add('active');
-                videos[index].play();
-
-                // Update text
-                titleElement.textContent = features[index].title;
-                descriptionElement.textContent = features[index].description;
-            }
-
-            dots.forEach(dot => {
-                dot.addEventListener('click', () => {
-                    const index = parseInt(dot.dataset.index);
-                    updateCarousel(index);
+                // Check if video can play
+                video.addEventListener('canplay', function() {
+                    video.play().catch(function(error) {
+                        console.log("Video autoplay failed:", error);
+                    });
                 });
             });
-
-            // Optional: Auto-advance carousel
-            let currentIndex = 0;
-            setInterval(() => {
-                currentIndex = (currentIndex + 1) % dots.length;
-                updateCarousel(currentIndex);
-            }, 5000); // Change slide every 5 seconds
         });
     </script>
 </body>

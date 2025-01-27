@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI and Islam: Building Trust - nasma.ai</title>
+    <!-- Import Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Import Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Import Tailwind Typography Plugin -->
+    <link href="https://cdn.jsdelivr.net/npm/@tailwindcss/typography@0.5.10/dist/typography.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        /* Apply Space Grotesk font to h1 */
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Apply Space Grotesk font to all headings and body text */
+        body, h1, h2, h3, h4, h5, h6, p, a, span, div {
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        /* Article content styles */
+        .prose h2 {
+            font-size: 1.875rem;
+            line-height: 2.25rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #1a202c;
+        }
+
+        .prose p {
+            margin-top: 1.25rem;
+            margin-bottom: 1.25rem;
+            line-height: 1.75;
+            color: #4a5568;
+        }
+
+        .prose .lead {
+            font-size: 1.25rem;
+            line-height: 1.75;
+            color: #2d3748;
+            margin-bottom: 2rem;
+        }
+    </style>
+
+    <!-- Article Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "AI and Islam: Building Trust",
+        "image": "https://nasma.ai/images/blog/ai-islam.jpg",
+        "author": {
+            "@type": "Organization",
+            "name": "nasma.ai"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "nasma.ai",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://nasma.ai/images/logo.png"
+            }
+        },
+        "datePublished": "2024-03-16",
+        "dateModified": "2024-03-16"
+    }
+    </script>
+</head>
+<body class="bg-white">
+    <!-- Top Navigation Bar -->
+    <nav class="bg-white shadow-sm fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <a href="/" class="flex items-center space-x-2">
+                    <span class="text-xl font-bold">nasma.ai</span>
+                </a>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/articles" class="text-gray-600 hover:text-purple-600 transition duration-300">Research</a>
+                    <a href="/faq.html" class="text-gray-600 hover:text-purple-600 transition duration-300">FAQs</a>
+                </div>
+
+                <div class="md:hidden">
+                    <button type="button" class="text-gray-600 hover:text-gray-900 focus:outline-none" onclick="toggleMobileMenu()">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div id="mobileMenu" class="hidden md:hidden pb-4">
+                <a href="/articles" class="block py-2 text-gray-600 hover:text-purple-600 transition duration-300">Research</a>
+                <a href="/faq.html" class="block py-2 text-gray-600 hover:text-purple-600 transition duration-300">FAQs</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Add a spacer -->
+    <div class="h-16"></div>
+
+    <!-- Article Header -->
+    <div class="relative">
+        <div class="w-full h-96">
+            <img src="../images/ali-rizvi-RCjKsxFb6N4-unsplash.jpg" alt="AI in Islamic Studies" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-gray-900/75 to-gray-900/0"></div>
+        </div>
+        <div class="absolute bottom-0 inset-x-0 p-6 text-white">
+            <div class="max-w-3xl mx-auto">
+                <div class="flex items-center gap-x-4 text-sm">
+                    <time datetime="2024-03-16">2 Jan, 2025</time>
+                    <span class="relative z-10 rounded-full bg-gray-100 bg-opacity-20 px-3 py-1.5 font-medium text-white">Technology</span>
+                </div>
+                <h1 class="mt-3 text-3xl font-bold">AI and Islam: Building Trust</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- Article Content -->
+    <div class="max-w-3xl mx-auto px-4 py-12">
+        <!-- Article Introduction -->
+        <article class="prose prose-lg prose-purple max-w-none">
+        <p class="lead">
+            As technology continues to evolve, artificial intelligence is playing an increasingly significant role in how we approach Islamic studies and spiritual growth. This article explores the intersection of AI and Islamic scholarship, examining both the opportunities and considerations it presents.
+        </p>
+
+        
+        <iframe height="175" width="100%" title="Media player" src="https://embed.podcasts.apple.com/us/podcast/building-trust-navigating-ai-in-islam/id1792821505?i=1000685607328&amp;itscg=30200&amp;itsct=podcast_box_player&amp;ls=1&amp;mttnsubad=1000685607328&amp;theme=auto" id="embedPlayer" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" allow="autoplay *; encrypted-media *; clipboard-write" style="border: 0px; border-radius: 12px; width: 100%; height: 175px; max-width: 660px;"></iframe>
+        
+        <div class="my-8 bg-gray-50 rounded-lg p-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-4">
+                    <div class="w-16 h-16 bg-purple-600 rounded-lg flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                        </svg>
+                    </div>
+                    
+                </div>
+                
+                <!-- Audio Player -->
+                <div class="w-full md:w-auto flex-1 max-w-xl">
+                    <audio controls class="w-full" preload="metadata">
+                        <source src="/audio/Islam-AI-Opportunities-Threats.wav.wav" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+
+                <!-- Download Button -->
+                <!-- <a href="/audio/Islam-AI-Opportunities-Threats.wav.wav" download class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    Download
+                </a> -->
+            </div>
+        </div>
+
+        <h2 class="text-3xl font-bold mt-8 mb-4 text-center">Timeline of AI in Islamic Studies</h2>
+
+        <!-- Timeline Container -->
+        <div class="relative wrap overflow-hidden py-10 px-4">
+            <div class="absolute border-l-2 border-purple-200 h-full left-1/2"></div>
+            
+            <!-- 2010-2015 -->
+            <div class="mb-8 flex justify-between items-center w-full">
+                <div class="order-1 w-5/12"></div>
+                <div class="z-20 flex items-center order-1 bg-purple-600 shadow-xl w-8 h-8 rounded-full">
+                    <h1 class="mx-auto font-semibold text-lg text-white">1</h1>
+                </div>
+                <div class="order-1 bg-white rounded-lg shadow-xl w-5/12 px-6 py-4">
+                    <h3 class="mb-3 font-bold text-purple-600">2010-2015: Foundational Period</h3>
+                    <p class="text-sm text-gray-600">
+                        Focus on digital preservation and basic text processing of Islamic texts. Creation of digital repositories and implementation of fundamental search functionality.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 2015-2019 -->
+            <div class="mb-8 flex justify-between flex-row-reverse items-center w-full">
+                <div class="order-1 w-5/12"></div>
+                <div class="z-20 flex items-center order-1 bg-purple-600 shadow-xl w-8 h-8 rounded-full">
+                    <h1 class="mx-auto font-semibold text-lg text-white">2</h1>
+                </div>
+                <div class="order-1 bg-white rounded-lg shadow-xl w-5/12 px-6 py-4">
+                    <h3 class="mb-3 font-bold text-purple-600">2015-2019: Development Phase</h3>
+                    <p class="text-sm text-gray-600">
+                        Emergence of sophisticated NLP capabilities and significant advancements in handling classical Arabic texts. Notable events include the Hadith Database project and Sophia robot development.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 2020-2022 -->
+            <div class="mb-8 flex justify-between items-center w-full">
+                <div class="order-1 w-5/12"></div>
+                <div class="z-20 flex items-center order-1 bg-purple-600 shadow-xl w-8 h-8 rounded-full">
+                    <h1 class="mx-auto font-semibold text-lg text-white">3</h1>
+                </div>
+                <div class="order-1 bg-white rounded-lg shadow-xl w-5/12 px-6 py-4">
+                    <h3 class="mb-3 font-bold text-purple-600">2020-2022: AI Integration</h3>
+                    <p class="text-sm text-gray-600">
+                        AI systems capable of complex textual analysis emerge. Key developments in Islamic legal studies, manuscript preservation, and ethical frameworks based on Maqasid al-Shariah.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 2023 -->
+            <div class="mb-8 flex justify-between flex-row-reverse items-center w-full">
+                <div class="order-1 w-5/12"></div>
+                <div class="z-20 flex items-center order-1 bg-purple-600 shadow-xl w-8 h-8 rounded-full">
+                    <h1 class="mx-auto font-semibold text-lg text-white">4</h1>
+                </div>
+                <div class="order-1 bg-white rounded-lg shadow-xl w-5/12 px-6 py-4">
+                    <h3 class="mb-3 font-bold text-purple-600">2023: Educational Innovation</h3>
+                    <p class="text-sm text-gray-600">
+                        Major advances in AI-enhanced Islamic education, including curriculum mapping, personalized learning, and integration of ChatGPT in Fiqh studies.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 2024-2025 -->
+            <div class="mb-8 flex justify-between items-center w-full">
+                <div class="order-1 w-5/12"></div>
+                <div class="z-20 flex items-center order-1 bg-purple-600 shadow-xl w-8 h-8 rounded-full">
+                    <h1 class="mx-auto font-semibold text-lg text-white">5</h1>
+                </div>
+                <div class="order-1 bg-white rounded-lg shadow-xl w-5/12 px-6 py-4">
+                    <h3 class="mb-3 font-bold text-purple-600">2024-2025: Current Developments</h3>
+                    <p class="text-sm text-gray-600">
+                        Launch of AI-driven Hadith database, advancements in machine translation for Islamic texts, and continued research into ethical implications of AI in Islamic contexts.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Current Research -->
+        <div class="bg-purple-50 rounded-lg p-6 mb-8">
+            <h3 class="text-lg font-semibold mb-4">Ongoing Research Areas</h3>
+            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li>AI-powered tools for Hadith analysis and verification</li>
+                <li>Ethical implications of AI in Islamic contexts</li>
+                <li>AI assistance in Islamic legal research and decision making</li>
+                <li>AI-powered telemedicine using Islamic principles</li>
+                <li>AI development for Islamic finance and Zakat distribution</li>
+            </ul>
+        </div>
+
+        <!-- Add before the Share Links section -->
+        <div class="mt-16 border-t border-gray-200 pt-8">
+            <h2 class="text-2xl font-bold mb-6">References & Key Contributors</h2>
+            
+            <!-- Pioneers & Leaders -->
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold mb-4 text-purple-600">Pioneers in AI & Islamic Studies</h3>
+                <div class="space-y-4">
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="font-semibold">John McCarthy</h4>
+                        <p class="text-gray-600 text-sm">American computer scientist considered the "father of Artificial Intelligence"</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="font-semibold">Yavuz Ünal</h4>
+                        <p class="text-gray-600 text-sm">Rector of Ondokuz Mayıs University (OMU), spearheading the "Hadith Database" project</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contemporary Researchers -->
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold mb-4 text-purple-600">Contemporary Researchers</h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="font-semibold">Muhammad Mehmood</h4>
+                        <p class="text-gray-600 text-sm">Lecturer at the Faculty of Shari'ah and Law, International Islamic University Islamabad</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="font-semibold">Imran Khan Keerio</h4>
+                        <p class="text-gray-600 text-sm">Lecturer in Computer Science and Technology, Sindh Madressatul Islam University</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="font-semibold">Muhammad Husnain</h4>
+                        <p class="text-gray-600 text-sm">PhD Research Scholar, Universiti Selangor, Malaysia</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="font-semibold">Syed Tahsin Ahmed</h4>
+                        <p class="text-gray-600 text-sm">Retired KAS officer, author of AI and Quranic studies research</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Classical Scholars -->
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold mb-4 text-purple-600">Classical Scholars & References</h3>
+                <div class="space-y-4">
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="font-semibold">Yusuf al-Qaradawi</h4>
+                        <p class="text-gray-600 text-sm">Scholar referenced for contemporary approaches to Islamic jurisprudence in the digital age</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="font-semibold">Ibn Jarir at Tabari</h4>
+                        <p class="text-gray-600 text-sm">Cited for his commentary on apostasy in the Quran</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Research Teams -->
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold mb-4 text-purple-600">Notable Research Teams</h3>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h4 class="font-semibold">Universitas Brawijaya Research Team</h4>
+                    <p class="text-gray-600 text-sm">Ana Khoirunnisa, Fathur Rohman, Hilda Aulya Azizah, Devi Ardianti, Arinta Lailatul Maghfiroh, Aditya Muhammad Noor</p>
+                    <p class="text-gray-600 text-sm mt-2">Studied the opportunities and threats of AI in Islam</p>
+                </div>
+            </div>
+
+            <!-- Additional Contributors -->
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold mb-4 text-purple-600">Additional Contributors</h3>
+                <div class="bg-purple-50 p-6 rounded-lg">
+                    <p class="text-gray-700">
+                        Additional valuable contributions were made by: Khan (2020), Mohammad et al. (2021), Almusharraf & Bailey (2023), Ahmad, Rabee, Zulkifle, Al-Hassani, Al-Khadimi, Ghaly, Ibrahim, Abdul Rahman, Mohd Saifuddeen, Inhorn, Mohd Faiz, Aliff, Moustafa, Muhsin, Chin, Padela, and many others in the field of AI and Islamic studies.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </article>
+
+        <!-- Share Links and Photo Credits -->
+        <div class="mt-12 border-t border-gray-200 pt-8">
+            <div class="flex flex-col md:flex-row justify-between items-start">
+                <!-- Share Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Share this article</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-600 hover:text-purple-600 transition duration-300">Twitter</a>
+                        <a href="#" class="text-gray-600 hover:text-purple-600 transition duration-300">LinkedIn</a>
+                        <a href="#" class="text-gray-600 hover:text-purple-600 transition duration-300">Facebook</a>
+                    </div>
+                </div>
+
+                <!-- Photo Credits -->
+                <div class="mt-4 md:mt-0 text-sm text-gray-500">
+                    <p>Photo by 
+                        <a href="https://unsplash.com/@alirizvie?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash" 
+                           class="text-purple-600 hover:text-purple-800 transition duration-300">Ali Rizvi</a> 
+                        on 
+                        <a href="https://unsplash.com/photos/grayscale-photo-of-moon-in-dark-night-sky-RCjKsxFb6N4?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash" 
+                           class="text-purple-600 hover:text-purple-800 transition duration-300">Unsplash</a>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 text-gray-600">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p>&copy; 2024 nasma.ai. ❤️ abu dhabi. bismillah.</p>
+                <div class="mt-4 md:mt-0">
+                    <a href="/privacy.txt" class="text-sm mr-4 hover:text-purple-600 transition duration-300">Privacy Policy</a>
+                    <a href="/terms.txt" class="text-sm hover:text-purple-600 transition duration-300">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html> 
