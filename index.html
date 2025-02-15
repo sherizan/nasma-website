@@ -39,6 +39,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* Apply Space Grotesk font to h1 */
         h1 {
@@ -360,6 +361,63 @@
         .carousel-video.active {
             display: block;
         }
+
+        .carousel-container {
+            overflow: hidden;
+            width: 100vw; /* Full viewport width */
+            position: relative;
+            mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+        }
+
+        .carousel-row {
+            display: flex;
+            animation: scrollLeft 20s linear infinite;
+        }
+
+        .carousel-row.reverse {
+            animation: scrollRight 20s linear infinite;
+        }
+
+        .carousel-item {
+            min-width: 250px; /* Full viewport width */
+            box-sizing: border-box;
+            margin: 16px;
+            border-radius: 16px;
+            padding: 1.5rem; /* Use relative units for padding */
+        }
+
+        @keyframes scrollLeft {
+            0% {
+                transform: translateX(50%);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        @keyframes scrollRight {
+            0% {
+                transform: translateX(-50%);
+            }
+            100% {
+                transform: translateX(50%);
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .carousel-item {
+                min-width: 100%; /* Adjust to full width for smaller screens */
+                margin: 0 8px; /* Reduce margin for smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .carousel-item {
+                padding: 0.5rem; /* Further reduce padding for very small screens */
+            }
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800">
@@ -425,10 +483,8 @@
                     </defs>
                 </svg>
             </div>
-            
             <h1 class="text-4xl md:text-5xl font-bold mb-8">nasma.ai</h1>
             <p class="text-xl md:text-2xl text-gray-600 mb-8">Your daily Muslim companion for spiritual growth, built with simplicity, modernity, and mindfulness at its core.</p>
-            
             <div class="flex justify-center space-x-4 mb-8">
                 <a href="https://apps.apple.com/app/id6740181795" class="inline-block transition duration-300" target="_blank">
                     <img src="images/apple.png" alt="Download on the App Store" class="w-48 h-auto">
@@ -437,7 +493,219 @@
                     <img src="images/google.png" alt="Nasma coming soon Google Play" class="w-48 h-auto">
                 </a>
             </div>
+        </div>
+    </section>
 
+    <!-- Testimonials Section -->
+    <section class="px-4 py-16 mt-24">
+        <div class="text-center">
+            <h2 class="text-3xl font-bold mb-8">Hear it from our Ummah</h2>
+            <div class="carousel-container">
+                <div class="carousel-row">
+                    <div class="carousel-item bg-white p-6 rounded-lg hover:shadow-md transition-shadow duration-300 text-left">
+                        <div class="flex mb-4">
+                            <div class="w-12 h-12">
+                                <img src="images/mus-user.png" alt="Apple Review" class="w-12 h-12 rounded-full">
+                            </div>
+                            <div class="ml-4 text-left">
+                                <a href="https://nasma.ai/download" target="_blank">Mustaein</a>
+                                <p class="text-gray-400">Singapore 🇸🇬</p>
+                            </div>
+                          </div>
+                        <p class="text-gray-600">
+                            <span class="inline-block">
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                            </span>
+                        </p>
+                        <p class="text-gray-600 font-bold font-serif mb-4">Great</p>
+                        <p class="text-gray-600 mb-4 italic font-serif">"Simple with good guidance."</p>
+                    </div>
+                    <div class="carousel-item bg-white p-6 rounded-lg hover:shadow-md transition-shadow duration-300 text-left">
+                        <div class="flex mb-4">
+                            <div class="w-12 h-12">
+                                <img src="images/wakapiz-user.png" alt="Apple Review" class="w-12 h-12 rounded-full">
+                            </div>
+                            <div class="ml-4 text-left">
+                                <a href="https://nasma.ai/download" target="_blank">Wak Apiz</a>
+                                <p class="text-gray-400">Singapore 🇸🇬</p>
+                            </div>
+                          </div>
+                        <p class="text-gray-600">
+                            <span class="inline-block">
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                            </span>
+                        </p>
+                        <p class="text-gray-600 font-bold font-serif mb-4">Love the app! Useful features</p>
+                        <p class="text-gray-600 mb-4 italic font-serif">"Love the tasbih feature and the Nasma AI chat is a great feature to enhance our knowledge in Islam. It's definitely user friendly. Definitely worth the download!"</p>
+                    </div>
+                    <div class="carousel-item bg-white p-6 rounded-lg hover:shadow-md transition-shadow duration-300 text-left">
+                        <div class="flex mb-4">
+                            <div class="w-12 h-12">
+                                <img src="images/apple-user.png" alt="Apple Review" class="w-12 h-12 rounded-full">
+                            </div>
+                            <div class="ml-4 text-left">
+                                <a href="https://nasma.ai/download" target="_blank">Zees1987</a>
+                                <p class="text-gray-400">United Arab Emirates 🇦🇪</p>
+                            </div>
+                          </div>
+                        <p class="text-gray-600">
+                            <span class="inline-block">
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                            </span>
+                        </p>
+                        <p class="text-gray-600 font-bold font-serif mb-4">New best app for muslims</p>
+                        <p class="text-gray-600 mb-4 italic font-serif">"This is one the best apps for any muslim, prayer timings, qibla and everything is so simplified you love to use this. All the best and I hope this will become the top most app for anyone who wants to use for prayer timings and more."</p>
+                    </div>
+                    
+                    <div class="carousel-item bg-white p-6 rounded-lg hover:shadow-md transition-shadow duration-300 text-left">
+                        <div class="flex mb-4">
+                            <div class="w-12 h-12">
+                                <img src="images/assia-user.png" alt="Apple Review" class="w-12 h-12 rounded-full">
+                            </div>
+                            <div class="ml-4 text-left">
+                                <a href="https://nasma.ai/download" target="_blank">Assia B.B</a>
+                                <p class="text-gray-400">France 🇫🇷</p>
+                            </div>
+                          </div>
+                        <p class="text-gray-600">
+                            <span class="inline-block">
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                            </span>
+                        </p>
+                        <p class="text-gray-600 font-bold font-serif mb-4">Excellente</p>
+                        <p class="text-gray-600 mb-4 italic font-serif">"Excellente appli pour suivre ses prières ! Le tracker est super pratique, et le petit message de motivation est vraiment encourageant. Je recommande vivement"</p>
+                    </div>
+                </div>
+                <!-- reverse the carousel-row -->
+                <div class="carousel-row reverse">
+                    <div class="carousel-item bg-white p-6 rounded-lg hover:shadow-md transition-shadow duration-300 text-left">
+                        <div class="flex mb-4">
+                            <div class="w-12 h-12">
+                                <img src="images/apple-user.png" alt="Apple Review" class="w-12 h-12 rounded-full">
+                            </div>
+                            <div class="ml-4 text-left">
+                                <a href="https://nasma.ai/download" target="_blank">Coeurnivore</a>
+                                <p class="text-gray-400">France 🇫🇷</p>
+                            </div>
+                          </div>
+                        <p class="text-gray-600">
+                            <span class="inline-block">
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                            </span>
+                        </p>
+                        <p class="text-gray-600 font-bold font-serif mb-4">Love it</p>
+                        <p class="text-gray-600 mb-4 italic font-serif">"Very Good App can't wait for the French version"</p>
+                    </div>
+                    <div class="carousel-item bg-white p-6 rounded-lg hover:shadow-md transition-shadow duration-300 text-left">
+                        <div class="flex mb-4">
+                            <div class="w-12 h-12">
+                                <img src="images/ummah-anas.jpeg" alt="Anas Mohaideen" class="w-12 h-12 rounded-full inline-block mr-2">
+                            </div>
+                            <div class="ml-4 text-left">
+                                <a href="https://nasma.ai/download" target="_blank">Anas Mohaideen</a>
+                                <p class="text-gray-400">India 🇮🇳</p>
+                            </div>
+                          </div>
+                        <p class="text-gray-600">
+                            <span class="inline-block">
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                            </span>
+                        </p>
+                        <p class="text-gray-600 font-bold font-serif mb-4">Linkedin</p>
+                        <p class="text-gray-600 mb-4 italic font-serif">"I'm absolutely loving it and can't resist exploring every time I open it, even when I have other tasks in mind."</p>
+                    </div>
+                    <div class="carousel-item bg-white p-6 rounded-lg hover:shadow-md transition-shadow duration-300 text-left">
+                        <div class="flex mb-4">
+                            <div class="w-12 h-12">
+                                <img src="images/bubba-user.png" alt="Apple Review" class="w-12 h-12 rounded-full">
+                            </div>
+                            <div class="ml-4 text-left">
+                                <a href="https://nasma.ai/download" target="_blank">BubbaHafiz</a>
+                                <p class="text-gray-400">Singapore 🇸🇬</p>
+                            </div>
+                          </div>
+                        <p class="text-gray-600">
+                            <span class="inline-block">
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                            </span>
+                        </p>
+                        <p class="text-gray-600 font-bold font-serif mb-4">Awesome app</p>
+                        <p class="text-gray-600 mb-4 italic font-serif">"A simple but useful app for Muslims to track daily prayers, get notification on prayer timings and the chat function is great. We can ask questions regarding Islam and get an explanation."</p>
+                    </div>
+                    <div class="carousel-item bg-white p-6 rounded-lg hover:shadow-md transition-shadow duration-300 text-left">
+                        <div class="flex mb-4">
+                            <div class="w-12 h-12">
+                                <img src="images/nadir-user.png" alt="Apple Review" class="w-12 h-12 rounded-full">
+                            </div>
+                            <div class="ml-4 text-left">
+                                <a href="https://nasma.ai/download" target="_blank">Nadiir04</a>
+                                <p class="text-gray-400">France 🇫🇷</p>
+                            </div>
+                          </div>
+                        <p class="text-gray-600">
+                            <span class="inline-block">
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                            </span>
+                        </p>
+                        <p class="text-gray-600 font-bold font-serif mb-4">Nasma</p>
+                        <p class="text-gray-600 mb-4 italic font-serif">"Very good app to know everything about Islam in 2025 !!"</p>
+                    </div>
+                    <div class="carousel-item bg-white p-6 rounded-lg hover:shadow-md transition-shadow duration-300 text-left">
+                        <div class="flex mb-4">
+                            <div class="w-12 h-12">
+                                <img src="images/sophia-user.png" alt="Apple Review" class="w-12 h-12 rounded-full">
+                            </div>
+                            <div class="ml-4 text-left">
+                                <a href="https://nasma.ai/download" target="_blank">SophiaBSheikh</a>
+                                <p class="text-gray-400">Morocco 🇲🇦</p>
+                            </div>
+                          </div>
+                        <p class="text-gray-600">
+                            <span class="inline-block">
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                            </span>
+                        </p>
+                        <p class="text-gray-600 font-bold font-serif mb-4">Amazing app!!</p>
+                        <p class="text-gray-600 mb-4 italic font-serif">"Great to track all my prayers and remember all duaa! May Allah facilitate all of us"</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -536,6 +804,17 @@
             "url": "https://nasma.ai"
         }
     }
+    </script>
+    <script>
+    document.querySelectorAll('.carousel-row').forEach(row => {
+        row.addEventListener('mouseover', () => {
+            row.style.animationPlayState = 'paused';
+        });
+
+        row.addEventListener('mouseout', () => {
+            row.style.animationPlayState = 'running';
+        });
+    });
     </script>
 </body>
 </html> 

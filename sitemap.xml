@@ -13,6 +13,11 @@
   <priority>1.00</priority>
 </url>
 <url>
+  <loc>https://nasma.ai/features/</loc>
+  <lastmod>2025-01-27T18:55:47+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
   <loc>https://nasma.ai/articles/</loc>
   <lastmod>2025-01-27T18:55:47+00:00</lastmod>
   <priority>0.80</priority>
@@ -47,11 +52,4 @@
   <lastmod>2025-01-27T18:55:47+00:00</lastmod>
   <priority>0.64</priority>
 </url>
-<url>
-  <loc>https://nasma.ai/privacy.txt</loc>
-  <lastmod>2025-01-27T18:55:47+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-
-
 </urlset>
