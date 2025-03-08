@@ -8,8 +8,8 @@ Let Nasma.ai guide you, refresh your spirit, and keep you aligned with your dail
 
 —
 
-Nasma.ai is a project by Sherizan Sheikh, made for his supportive wife, Sophia.
+Nasma.ai is designed and created by Sherizan Sheikh, for his supportive wife, Sophia.
 
-Prayer times data is provided by Al Adhan Service.
+Prayer times data is provided by Islamic Network.
 
-AI conversations are powered by OpenAI ChatGPT.
+AI conversations are powered by fine-tuned OpenAI model.
